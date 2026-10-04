@@ -4,8 +4,10 @@ import { useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial } from "@react-three/drei";
 import type { Mesh } from "three";
+import { useReducedMotion } from "motion/react";
 
 function Forme() {
+  const reduit = useReducedMotion();
   const ref = useRef<Mesh>(null);
   const souris = useRef({ x: 0, y: 0 });
 
@@ -19,7 +21,7 @@ function Forme() {
   }, []);
 
   useFrame(() => {
-  if (!ref.current) return;
+if (!ref.current || reduit) return;
   const m = souris.current;
 
   // Rotation vers la souris
@@ -29,21 +31,22 @@ function Forme() {
   // Déplacement vers la souris
   ref.current.position.x += (m.x * 0.8 - ref.current.position.x) * 0.05;
   ref.current.position.y += (-m.y * 0.6 - ref.current.position.y) * 0.05;
+  
 });
 
   return (
-    <Float speed={2} floatIntensity={1.5}>
-      <mesh ref={ref} scale={1.6}>
-        <icosahedronGeometry args={[1, 64]} />
-        <MeshDistortMaterial
-          color="#6d5dfc"
-          distort={0.45}
-          speed={2}
-          roughness={0.2}
-          metalness={0.6}
-        />
-      </mesh>
-    </Float>
+    <Float speed={reduit ? 0 : 2} floatIntensity={reduit ? 0 : 1.5}>
+  <mesh ref={ref} scale={1.6}>
+    <icosahedronGeometry args={[1, 64]} />
+    <MeshDistortMaterial
+      color="#6d5dfc"
+      distort={reduit ? 0.2 : 0.45}
+      speed={reduit ? 0 : 2}
+      roughness={0.2}
+      metalness={0.6}
+    />
+  </mesh>
+</Float>
   );
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import Curseur from "@/components/Curseur";
+import Providers from "@/components/Providers";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -39,9 +40,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}>
-        <Curseur />
-        {children}
-      </body>
+  <Providers>
+    <Curseur />
+    {children}
+  </Providers>
+</body>
     </html>
   );
 }
