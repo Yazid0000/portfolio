@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import Curseur from "@/components/Curseur";
 import Providers from "@/components/Providers";
+import Terminal from "@/components/Terminal";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}>
   <Providers>
     <Curseur />
+    <Terminal />
     {children}
   </Providers>
 </body>

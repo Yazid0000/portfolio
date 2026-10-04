@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial } from "@react-three/drei";
 import type { Mesh } from "three";
 import { useReducedMotion } from "motion/react";
+
 
 function Forme() {
   const reduit = useReducedMotion();
@@ -21,7 +22,7 @@ function Forme() {
   }, []);
 
   useFrame(() => {
-if (!ref.current || reduit) return;
+     if (!ref.current || reduit) return;
   const m = souris.current;
 
   // Rotation vers la souris
@@ -37,7 +38,7 @@ if (!ref.current || reduit) return;
   return (
     <Float speed={reduit ? 0 : 2} floatIntensity={reduit ? 0 : 1.5}>
   <mesh ref={ref} scale={1.6}>
-    <icosahedronGeometry args={[1, 64]} />
+    <icosahedronGeometry args={[1, 24]} />
     <MeshDistortMaterial
       color="#6d5dfc"
       distort={reduit ? 0.2 : 0.45}
@@ -51,12 +52,29 @@ if (!ref.current || reduit) return;
 }
 
 export default function Scene3D() {
+  const conteneur = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const observateur = new IntersectionObserver(([entree]) =>
+      setVisible(entree.isIntersecting)
+    );
+    if (conteneur.current) observateur.observe(conteneur.current);
+    return () => observateur.disconnect();
+  }, []);
+
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]}>
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[3, 3, 5]} intensity={2} />
-      <pointLight position={[-4, -2, 2]} intensity={20} color="#ff4fd8" />
-      <Forme />
-    </Canvas>
+    <div ref={conteneur} className="w-full h-full">
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 45 }}
+        dpr={[1, 1.5]}
+        frameloop={visible ? "always" : "never"}
+      >
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[3, 3, 5]} intensity={2} />
+        <pointLight position={[-4, -2, 2]} intensity={20} color="#ff4fd8" />
+        <Forme />
+      </Canvas>
+    </div>
   );
 }
