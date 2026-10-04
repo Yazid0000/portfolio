@@ -1,5 +1,6 @@
 import ThemeToggle from "@/components/ThemeToggle";
 import Scene3D from "@/components/Scene3D";
+import TexteRevele from "@/components/TexteRevele";
 
 export default function Hero() {
   return (
@@ -17,7 +18,9 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center gap-6">
         <p className="text-sm uppercase tracking-widest opacity-60">Développeur web freelance</p>
-        <h1 className="text-6xl md:text-8xl font-bold mix-blend-difference text-white">Yazid</h1>
+        <h1 className="font-display font-extrabold text-[22vw] md:text-[16vw] leading-none tracking-tight text-black dark:text-white">
+  <TexteRevele texte="YAZID" />
+</h1>
         <p className="text-xl max-w-xl opacity-80">
           Je conçois et développe des sites et applications web sur mesure, livrés en quelques jours.
         </p>
