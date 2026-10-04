@@ -1,8 +1,8 @@
 const liens = [
-  { nom: "Email", url: "mailto:ton-email@exemple.com" },
-  { nom: "WhatsApp", url: "https://wa.me/2126XXXXXXXX" },
+  { nom: "Email", url: "mailto:yazidbennouna5@gmail.com" },
+  { nom: "WhatsApp", url: "https://wa.me/212762669527" },
   { nom: "GitHub", url: "https://github.com/Yazid0000" },
-  { nom: "LinkedIn", url: "#" },
+  { nom: "LinkedIn", url: "https://www.linkedin.com/jobs/" },
 ];
 
 export default function Contact() {
