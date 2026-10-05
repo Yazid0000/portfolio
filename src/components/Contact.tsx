@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 const liens = [
   { nom: "Email", url: "mailto:yazidbennouna5@gmail.com" },
   { nom: "WhatsApp", url: "https://wa.me/212762669527" },
@@ -6,13 +8,15 @@ const liens = [
 ];
 
 export default function Contact() {
+  const t = useTranslations("Contact");
+
   return (
     <section
       id="contact"
       className="min-h-screen px-6 py-24 flex flex-col items-center justify-center text-center"
     >
-      <h2 className="text-4xl md:text-6xl font-bold mb-6">Un projet en tête ?</h2>
-      <p className="text-xl opacity-70 mb-10">Parlons-en. Réponse sous 24 h.</p>
+      <h2 className="text-4xl md:text-6xl font-bold mb-6">{t("titre")}</h2>
+      <p className="text-xl opacity-70 mb-10">{t("sousTitre")}</p>
 
       <div className="flex flex-wrap justify-center gap-4">
         {liens.map((l) => (

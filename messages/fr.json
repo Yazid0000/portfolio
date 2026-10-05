@@ -1,0 +1,94 @@
+{
+  "Meta": {
+    "title": "Yazid | Développeur web",
+    "description": "Sites vitrine, e-commerce et applications web sur mesure."
+  },
+  "Hero": {
+    "role": "Développeur web freelance",
+    "accroche": "Je conçois et développe des sites et applications web sur mesure, livrés en quelques jours.",
+    "voirProjets": "Voir mes projets",
+    "contact": "Me contacter"
+  },
+  "Theme": {
+    "clair": "☀️ Clair",
+    "sombre": "🌙 Sombre"
+  },
+  "Services": {
+    "titre": "Services",
+    "liste": [
+      {
+        "titre": "Site vitrine",
+        "description": "Présentez votre activité avec un site rapide, moderne et bien référencé.",
+        "points": ["Design sur mesure", "Responsive mobile", "SEO de base", "Formulaire de contact"]
+      },
+      {
+        "titre": "E-commerce",
+        "description": "Vendez en ligne avec une boutique simple à gérer.",
+        "points": ["Catalogue produits", "Panier et paiement", "Gestion des commandes", "Mobile-first"]
+      },
+      {
+        "titre": "Application web",
+        "description": "Automatisez votre activité avec un outil adapté à vos besoins.",
+        "points": ["Réservations", "Back-office", "Comptes utilisateurs", "Base de données"]
+      }
+    ]
+  },
+  "Projets": {
+    "titre": "Projets sélectionnés",
+    "types": {
+      "ecommerce": "E-commerce",
+      "app": "Application web",
+      "vitrine": "Site vitrine",
+      "landing": "Landing page",
+      "creatif": "Site créatif"
+    },
+    "cePortfolio": "Ce portfolio"
+  },
+  "Methode": {
+    "titre": "Méthode",
+    "etapes": [
+      { "titre": "Brief", "description": "On définit ensemble vos besoins, vos objectifs et votre budget." },
+      { "titre": "Maquette", "description": "Je vous propose un design. Vous validez avant le développement." },
+      { "titre": "Développement", "description": "Je construis le site. Vous suivez l'avancement." },
+      { "titre": "Livraison", "description": "Mise en ligne, tests sur mobile et ordinateur." },
+      { "titre": "Suivi", "description": "Corrections et accompagnement après la livraison." }
+    ]
+  },
+  "Competences": {
+    "titre": "Compétences",
+    "outils": "Outils"
+  },
+  "APropos": {
+    "titre": "À propos",
+    "paragraphes": [
+      "Je m'appelle Yazid, je suis développeur web basé au Maroc.",
+      "Je crée des sites et des applications web pour des entreprises, des commerçants et des artisans, au Maroc et à l'international.",
+      "Mon objectif : des sites rapides, beaux et simples à utiliser, livrés vite."
+    ]
+  },
+  "Contact": {
+    "titre": "Un projet en tête ?",
+    "sousTitre": "Parlons-en. Réponse sous 24 h."
+  },
+  "Terminal": {
+    "astuce": "Appuie sur ² ou `",
+    "bienvenue": "Bienvenue dans le terminal de Yazid.",
+    "aide": "Tape 'help' pour voir les commandes.",
+    "commandes": [
+      "about     → qui je suis",
+      "projets   → voir mes projets",
+      "services  → ce que je propose",
+      "contact   → me contacter",
+      "theme     → changer de thème",
+      "clear     → vider le terminal",
+      "exit      → fermer"
+    ],
+    "about": ["Yazid, développeur web basé au Maroc.", "Sites vitrine, e-commerce, applications web."],
+    "direction": "→ Direction {section}...",
+    "themeActive": "Thème {theme} activé.",
+    "sombre": "sombre",
+    "clair": "clair",
+    "inconnue": "Commande inconnue : {cmd}. Tape 'help'.",
+    "label": "Commande du terminal"
+  }
+}

@@ -1,34 +1,21 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-
-function sAbonner(callback: () => void) {
-  const observateur = new MutationObserver(callback);
-  observateur.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["class"],
-  });
-  return () => observateur.disconnect();
-}
-
-const lireTheme = () => document.documentElement.classList.contains("dark");
-const lireServeur = () => false;
+import { useTranslations } from "next-intl";
 
 export default function ThemeToggle() {
-  const sombre = useSyncExternalStore(sAbonner, lireTheme, lireServeur);
+  const t = useTranslations("Theme");
 
   const basculer = () => {
-    const nouveau = !sombre;
-    document.documentElement.classList.toggle("dark", nouveau);
-    localStorage.setItem("theme", nouveau ? "dark" : "light");
+    const sombre = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", sombre ? "dark" : "light");
   };
 
+  // Les deux libellés sont dans le HTML. Le CSS affiche le bon selon la classe "dark",
+  // dès le premier affichage, sans attendre React.
   return (
-    <button
-      onClick={basculer}
-      className="px-4 py-2 rounded-full border border-current text-sm"
-    >
-      {sombre ? "☀️ Clair" : "🌙 Sombre"}
+    <button onClick={basculer} className="px-4 py-2 rounded-full border border-current text-sm">
+      <span className="dark:hidden">{t("sombre")}</span>
+      <span className="hidden dark:inline">{t("clair")}</span>
     </button>
   );
 }

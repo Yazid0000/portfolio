@@ -2,22 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslations } from "next-intl";
 
 type Ligne = { type: "entree" | "sortie"; texte: string };
-
-const accueil: Ligne[] = [
-  { type: "sortie", texte: "Bienvenue dans le terminal de Yazid." },
-  { type: "sortie", texte: "Tape 'help' pour voir les commandes." },
-];
 
 function allerA(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
 export default function Terminal() {
+  const t = useTranslations("Terminal");
   const [ouvert, setOuvert] = useState(false);
   const [saisie, setSaisie] = useState("");
-  const [lignes, setLignes] = useState<Ligne[]>(accueil);
+  const [lignes, setLignes] = useState<Ligne[]>(() => [
+    { type: "sortie", texte: t("bienvenue") },
+    { type: "sortie", texte: t("aide") },
+  ]);
   const inputRef = useRef<HTMLInputElement>(null);
   const basRef = useRef<HTMLDivElement>(null);
 
@@ -47,30 +47,27 @@ export default function Terminal() {
 
     switch (cmd) {
       case "help":
-        reponse = [
-          "about     → qui je suis",
-          "projets   → voir mes projets",
-          "services  → ce que je propose",
-          "contact   → me contacter",
-          "theme     → changer de thème",
-          "clear     → vider le terminal",
-          "exit      → fermer",
-        ];
+        reponse = t.raw("commandes") as string[];
         break;
       case "about":
-        reponse = ["Yazid, développeur web basé au Maroc.", "Sites vitrine, e-commerce, applications web."];
+        reponse = t.raw("about") as string[];
         break;
       case "projets":
+      case "projects":
+        reponse = [t("direction", { section: cmd })];
+        setOuvert(false);
+        allerA("projets");
+        break;
       case "services":
       case "contact":
-        reponse = [`→ Direction ${cmd}...`];
+        reponse = [t("direction", { section: cmd })];
         setOuvert(false);
         allerA(cmd);
         break;
       case "theme": {
         const sombre = document.documentElement.classList.toggle("dark");
         localStorage.setItem("theme", sombre ? "dark" : "light");
-        reponse = [`Thème ${sombre ? "sombre" : "clair"} activé.`];
+        reponse = [t("themeActive", { theme: sombre ? t("sombre") : t("clair") })];
         break;
       }
       case "clear":
@@ -82,7 +79,7 @@ export default function Terminal() {
       case "":
         return;
       default:
-        reponse = [`Commande inconnue : ${cmd}. Tape 'help'.`];
+        reponse = [t("inconnue", { cmd })];
     }
 
     setLignes((l) => [
@@ -95,7 +92,7 @@ export default function Terminal() {
   return (
     <>
       <p className="hidden md:block fixed bottom-4 left-4 z-30 text-xs font-mono opacity-40">
-        Appuie sur ² ou ` 
+        {t("astuce")}
       </p>
 
       <AnimatePresence>
@@ -135,7 +132,7 @@ export default function Terminal() {
                   value={saisie}
                   onChange={(e) => setSaisie(e.target.value)}
                   className="flex-1 bg-transparent outline-none text-white"
-                  aria-label="Commande du terminal"
+                  aria-label={t("label")}
                   autoComplete="off"
                   spellCheck={false}
                 />

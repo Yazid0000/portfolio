@@ -1,25 +1,14 @@
-const services = [
-  {
-    titre: "Site vitrine",
-    description: "Présentez votre activité avec un site rapide, moderne et bien référencé.",
-    points: ["Design sur mesure", "Responsive mobile", "SEO de base", "Formulaire de contact"],
-  },
-  {
-    titre: "E-commerce",
-    description: "Vendez en ligne avec une boutique simple à gérer.",
-    points: ["Catalogue produits", "Panier et paiement", "Gestion des commandes", "Mobile-first"],
-  },
-  {
-    titre: "Application web",
-    description: "Automatisez votre activité avec un outil adapté à vos besoins.",
-    points: ["Réservations", "Back-office", "Comptes utilisateurs", "Base de données"],
-  },
-];
+import { useTranslations } from "next-intl";
+
+type Service = { titre: string; description: string; points: string[] };
 
 export default function Services() {
+  const t = useTranslations("Services");
+  const services = t.raw("liste") as Service[];
+
   return (
     <section id="services" className="min-h-screen px-6 py-24 max-w-6xl mx-auto">
-      <h2 className="text-4xl md:text-5xl font-bold mb-12">Services</h2>
+      <h2 className="text-4xl md:text-5xl font-bold mb-12">{t("titre")}</h2>
 
       <div className="grid md:grid-cols-3 gap-6">
         {services.map((s) => (

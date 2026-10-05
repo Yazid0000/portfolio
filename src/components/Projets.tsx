@@ -2,17 +2,20 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
+import { useTranslations } from "next-intl";
 
-const projets = [
-  { titre: "Entre Tables", type: "E-commerce", stack: "PHP · MySQL", couleur: "#c8553d", lien: "#" },
-  { titre: "ReservSys", type: "Application web", stack: "PHP · MySQL", couleur: "#2a9d8f", lien: "#" },
-  { titre: "Riad", type: "Site vitrine", stack: "Next.js · Tailwind", couleur: "#e9c46a", lien: "#" },
-  { titre: "Landing SaaS", type: "Landing page", stack: "Next.js · Tailwind", couleur: "#6d5dfc", lien: "#" },
-  { titre: "Dashboard", type: "Application web", stack: "Next.js · TypeScript", couleur: "#ff4fd8", lien: "#" },
-  { titre: "Ce portfolio", type: "Site créatif", stack: "Next.js · Three.js", couleur: "#111111", lien: "https://github.com/Yazid0000/portfolio" },
+const projets: { titre: string; type: "ecommerce" | "app" | "vitrine" | "landing" | "creatif"; stack: string; couleur: string; lien: string }[] = [
+  { titre: "Entre Tables", type: "ecommerce", stack: "PHP · MySQL", couleur: "#c8553d", lien: "#" },
+  { titre: "ReservSys", type: "app", stack: "PHP · MySQL", couleur: "#2a9d8f", lien: "#" },
+  { titre: "Riad", type: "vitrine", stack: "Next.js · Tailwind", couleur: "#e9c46a", lien: "#" },
+  { titre: "Landing SaaS", type: "landing", stack: "Next.js · Tailwind", couleur: "#6d5dfc", lien: "#" },
+  { titre: "Dashboard", type: "app", stack: "Next.js · TypeScript", couleur: "#ff4fd8", lien: "#" },
+  { titre: "cePortfolio", type: "creatif", stack: "Next.js · Three.js", couleur: "#111111", lien: "https://github.com/Yazid0000/portfolio" },
 ];
 
 export default function Projets() {
+  const t = useTranslations("Projets");
+  const nom = (titre: string) => (titre === "cePortfolio" ? t("cePortfolio") : titre);
   const [actif, setActif] = useState<number | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -29,7 +32,7 @@ export default function Projets() {
       }}
     >
       <h2 className="font-display text-sm uppercase tracking-widest opacity-60 mb-8">
-        Projets sélectionnés
+        {t("titre")}
       </h2>
 
       <ul onMouseLeave={() => setActif(null)}>
@@ -45,11 +48,11 @@ export default function Projets() {
               <span className="flex items-baseline gap-4">
                 <span className="text-sm opacity-50">0{i + 1}</span>
                 <span className="font-display font-extrabold text-4xl md:text-7xl tracking-tight transition-transform duration-300 group-hover:translate-x-4">
-                  {p.titre}
+                  {nom(p.titre)}
                 </span>
               </span>
               <span className="text-sm md:text-right opacity-70">
-                {p.type}
+                {t(`types.${p.type}`)}
                 <br />
                 {p.stack}
               </span>
@@ -74,7 +77,7 @@ export default function Projets() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {projets[actif].type}
+            {t(`types.${projets[actif].type}`)}
           </motion.div>
         )}
       </AnimatePresence>

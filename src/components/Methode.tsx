@@ -1,15 +1,14 @@
-const etapes = [
-  { titre: "Brief", description: "On définit ensemble vos besoins, vos objectifs et votre budget." },
-  { titre: "Maquette", description: "Je vous propose un design. Vous validez avant le développement." },
-  { titre: "Développement", description: "Je construis le site. Vous suivez l'avancement." },
-  { titre: "Livraison", description: "Mise en ligne, tests sur mobile et ordinateur." },
-  { titre: "Suivi", description: "Corrections et accompagnement après la livraison." },
-];
+import { useTranslations } from "next-intl";
+
+type Etape = { titre: string; description: string };
 
 export default function Methode() {
+  const t = useTranslations("Methode");
+  const etapes = t.raw("etapes") as Etape[];
+
   return (
     <section id="methode" className="min-h-screen px-6 py-24 max-w-4xl mx-auto">
-      <h2 className="text-4xl md:text-5xl font-bold mb-12">Méthode</h2>
+      <h2 className="text-4xl md:text-5xl font-bold mb-12">{t("titre")}</h2>
 
       <ol className="space-y-8">
         {etapes.map((e, i) => (

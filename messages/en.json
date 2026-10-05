@@ -1,0 +1,94 @@
+{
+  "Meta": {
+    "title": "Yazid | Web developer",
+    "description": "Custom websites, online stores and web applications."
+  },
+  "Hero": {
+    "role": "Freelance web developer",
+    "accroche": "I design and build custom websites and web apps, delivered in days.",
+    "voirProjets": "See my work",
+    "contact": "Get in touch"
+  },
+  "Theme": {
+    "clair": "☀️ Light",
+    "sombre": "🌙 Dark"
+  },
+  "Services": {
+    "titre": "Services",
+    "liste": [
+      {
+        "titre": "Business website",
+        "description": "Showcase your business with a fast, modern, search-friendly website.",
+        "points": ["Custom design", "Mobile responsive", "Basic SEO", "Contact form"]
+      },
+      {
+        "titre": "E-commerce",
+        "description": "Sell online with a store that's easy to manage.",
+        "points": ["Product catalog", "Cart and payment", "Order management", "Mobile-first"]
+      },
+      {
+        "titre": "Web application",
+        "description": "Automate your business with a tool built around your needs.",
+        "points": ["Bookings", "Admin dashboard", "User accounts", "Database"]
+      }
+    ]
+  },
+  "Projets": {
+    "titre": "Selected work",
+    "types": {
+      "ecommerce": "E-commerce",
+      "app": "Web application",
+      "vitrine": "Business website",
+      "landing": "Landing page",
+      "creatif": "Creative website"
+    },
+    "cePortfolio": "This portfolio"
+  },
+  "Methode": {
+    "titre": "Process",
+    "etapes": [
+      { "titre": "Brief", "description": "We define your needs, goals and budget together." },
+      { "titre": "Mockup", "description": "I propose a design. You approve it before development." },
+      { "titre": "Development", "description": "I build the site. You follow the progress." },
+      { "titre": "Launch", "description": "Going live, tested on mobile and desktop." },
+      { "titre": "Support", "description": "Fixes and support after delivery." }
+    ]
+  },
+  "Competences": {
+    "titre": "Skills",
+    "outils": "Tools"
+  },
+  "APropos": {
+    "titre": "About",
+    "paragraphes": [
+      "I'm Yazid, a web developer based in Morocco.",
+      "I build websites and web apps for businesses, shops and artisans, in Morocco and abroad.",
+      "My goal: fast, beautiful, easy-to-use websites, delivered quickly."
+    ]
+  },
+  "Contact": {
+    "titre": "Got a project in mind?",
+    "sousTitre": "Let's talk. Reply within 24 hours."
+  },
+  "Terminal": {
+    "astuce": "Press ` or ²",
+    "bienvenue": "Welcome to Yazid's terminal.",
+    "aide": "Type 'help' to see the commands.",
+    "commandes": [
+      "about     → who I am",
+      "projects  → see my work",
+      "services  → what I offer",
+      "contact   → get in touch",
+      "theme     → switch theme",
+      "clear     → clear the terminal",
+      "exit      → close"
+    ],
+    "about": ["Yazid, web developer based in Morocco.", "Business websites, e-commerce, web apps."],
+    "direction": "→ Going to {section}...",
+    "themeActive": "{theme} theme on.",
+    "sombre": "Dark",
+    "clair": "Light",
+    "inconnue": "Unknown command: {cmd}. Type 'help'.",
+    "label": "Terminal command"
+  }
+}
