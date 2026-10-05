@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import FormulaireContact from "@/components/FormulaireContact";
 
 const liens = [
   { nom: "Email", url: "mailto:yazidbennouna5@gmail.com" },
@@ -17,6 +18,10 @@ export default function Contact() {
     >
       <h2 className="text-4xl md:text-6xl font-bold mb-6">{t("titre")}</h2>
       <p className="text-xl opacity-70 mb-10">{t("sousTitre")}</p>
+
+      <FormulaireContact />
+
+      <p className="text-sm opacity-60 mt-12 mb-4">{t("form.ou")}</p>
 
       <div className="flex flex-wrap justify-center gap-4">
         {liens.map((l) => (

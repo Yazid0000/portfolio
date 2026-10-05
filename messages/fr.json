@@ -19,17 +19,32 @@
       {
         "titre": "Site vitrine",
         "description": "Présentez votre activité avec un site rapide, moderne et bien référencé.",
-        "points": ["Design sur mesure", "Responsive mobile", "SEO de base", "Formulaire de contact"]
+        "points": [
+          "Design sur mesure",
+          "Responsive mobile",
+          "SEO de base",
+          "Formulaire de contact"
+        ]
       },
       {
         "titre": "E-commerce",
         "description": "Vendez en ligne avec une boutique simple à gérer.",
-        "points": ["Catalogue produits", "Panier et paiement", "Gestion des commandes", "Mobile-first"]
+        "points": [
+          "Catalogue produits",
+          "Panier et paiement",
+          "Gestion des commandes",
+          "Mobile-first"
+        ]
       },
       {
         "titre": "Application web",
         "description": "Automatisez votre activité avec un outil adapté à vos besoins.",
-        "points": ["Réservations", "Back-office", "Comptes utilisateurs", "Base de données"]
+        "points": [
+          "Réservations",
+          "Back-office",
+          "Comptes utilisateurs",
+          "Base de données"
+        ]
       }
     ]
   },
@@ -47,11 +62,26 @@
   "Methode": {
     "titre": "Méthode",
     "etapes": [
-      { "titre": "Brief", "description": "On définit ensemble vos besoins, vos objectifs et votre budget." },
-      { "titre": "Maquette", "description": "Je vous propose un design. Vous validez avant le développement." },
-      { "titre": "Développement", "description": "Je construis le site. Vous suivez l'avancement." },
-      { "titre": "Livraison", "description": "Mise en ligne, tests sur mobile et ordinateur." },
-      { "titre": "Suivi", "description": "Corrections et accompagnement après la livraison." }
+      {
+        "titre": "Brief",
+        "description": "On définit ensemble vos besoins, vos objectifs et votre budget."
+      },
+      {
+        "titre": "Maquette",
+        "description": "Je vous propose un design. Vous validez avant le développement."
+      },
+      {
+        "titre": "Développement",
+        "description": "Je construis le site. Vous suivez l'avancement."
+      },
+      {
+        "titre": "Livraison",
+        "description": "Mise en ligne, tests sur mobile et ordinateur."
+      },
+      {
+        "titre": "Suivi",
+        "description": "Corrections et accompagnement après la livraison."
+      }
     ]
   },
   "Competences": {
@@ -68,7 +98,18 @@
   },
   "Contact": {
     "titre": "Un projet en tête ?",
-    "sousTitre": "Parlons-en. Réponse sous 24 h."
+    "sousTitre": "Parlons-en. Réponse sous 24 h.",
+    "form": {
+      "nom": "Nom",
+      "email": "Email",
+      "message": "Votre projet en quelques lignes",
+      "envoyer": "Envoyer",
+      "envoi": "Envoi...",
+      "succes": "Merci ! Votre message est bien parti. Je vous réponds sous 24 h.",
+      "erreurChamps": "Merci de remplir tous les champs avec un email valide.",
+      "erreurEnvoi": "L'envoi a échoué. Écrivez-moi directement par email ou WhatsApp.",
+      "ou": "ou directement"
+    }
   },
   "Terminal": {
     "astuce": "Appuie sur ² ou `",
@@ -83,7 +124,10 @@
       "clear     → vider le terminal",
       "exit      → fermer"
     ],
-    "about": ["Yazid, développeur web basé au Maroc.", "Sites vitrine, e-commerce, applications web."],
+    "about": [
+      "Yazid, développeur web basé au Maroc.",
+      "Sites vitrine, e-commerce, applications web."
+    ],
     "direction": "→ Direction {section}...",
     "themeActive": "Thème {theme} activé.",
     "sombre": "sombre",
