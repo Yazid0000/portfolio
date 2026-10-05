@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { siteUrl, cheminLangue } from "@/i18n/site";
 import "../globals.css";
 import Curseur from "@/components/Curseur";
 import Providers from "@/components/Providers";
@@ -37,9 +38,32 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Meta" });
+
   return {
+    metadataBase: new URL(siteUrl),
     title: t("title"),
     description: t("description"),
+    alternates: {
+      canonical: cheminLangue(locale),
+      languages: {
+        fr: cheminLangue("fr"),
+        en: cheminLangue("en"),
+        "x-default": cheminLangue("fr"),
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: cheminLangue(locale),
+      siteName: "Yazid",
+      title: t("title"),
+      description: t("description"),
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
