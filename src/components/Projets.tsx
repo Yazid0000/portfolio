@@ -30,7 +30,14 @@ const projets: Projet[] = [
   },
   { titre: "Landing SaaS", type: "landing", stack: "Next.js · Tailwind", couleur: "#6d5dfc", lien: "#" },
   { titre: "Dashboard", type: "app", stack: "Next.js · TypeScript", couleur: "#ff4fd8", lien: "#" },
-  { titre: "cePortfolio", type: "creatif", stack: "Next.js · Canvas", couleur: "#111111", lien: "https://github.com/Yazid0000/portfolio" },
+  {
+    titre: "cePortfolio",
+    type: "creatif",
+    stack: "Next.js · Canvas",
+    couleur: "#111111",
+    lien: "https://github.com/Yazid0000/portfolio",
+    image: "/projets/portfolio.jpg",
+  },
 ];
 
 export default function Projets() {

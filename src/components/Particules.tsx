@@ -8,10 +8,17 @@ type Particule = {
   vx: number; vy: number;
   r: number;
   accent: boolean;
-  k: number; // raideur du ressort : les points arrivent par vagues
+  k: number; // raideur du ressort (retour après dispersion ou survol)
+  sx: number; sy: number; // point de départ de l'intro
+  delai: number; // ms avant que le point se mette en route (vague de gauche à droite)
 };
 
 const ACCENT = "#6d5dfc";
+const DUREE_INTRO = 1200; // ms de trajet par point ; avec les délais, l'intro reste sous 2 s
+const FONDU_INTRO = 500; // ms d'apparition en fondu
+
+// Démarre vite et freine en douceur à l'arrivée.
+const ralentir = (t: number) => 1 - (1 - t) ** 4;
 
 // Pseudo-aléatoire déterministe : la composition est identique à chaque chargement.
 const rand = (n: number) => {
@@ -39,6 +46,7 @@ export default function Particules() {
     let couleur = "#000";
     const pointeur = { x: 0, y: 0, actif: false };
     let raf = 0;
+    let debut = -Infinity; // début de l'intro (-Infinity : pas d'intro)
     let visible = true;
     let annule = false;
 
@@ -86,13 +94,17 @@ export default function Particules() {
 
       const { pts, pas } = cibles();
       const r = Math.max(1.1, pas * 0.36);
+      debut = intro ? performance.now() : -Infinity;
       particules = pts.map((p, i) => {
+        // Départ : un nuage autour du nom, assez proche pour que le trajet reste lisible.
         const a = rand(i * 3.1) * Math.PI * 2;
-        const d = Math.max(W, H) * (0.55 + rand(i * 7.7) * 0.5);
+        const d = Math.min(W, H) * (0.25 + rand(i * 7.7) * 0.35);
         return {
           tx: p.x, ty: p.y,
-          x: intro ? W / 2 + Math.cos(a) * d : p.x,
-          y: intro ? H / 2 + Math.sin(a) * d : p.y,
+          x: p.x, y: p.y,
+          sx: p.x + Math.cos(a) * d,
+          sy: p.y + Math.sin(a) * d,
+          delai: (p.x / W) * 450 + rand(i * 4.4) * 250,
           vx: 0, vy: 0,
           r: r * (0.75 + rand(i * 5.3) * 0.5),
           accent: rand(i * 9.9) < 0.07,
@@ -114,7 +126,17 @@ export default function Particules() {
     function image() {
       ctx!.clearRect(0, 0, W, H);
       const R = Math.max(70, Math.min(W, H) * 0.12), R2 = R * R;
+      const t = performance.now() - debut;
+      ctx!.globalAlpha = Math.min(1, t / FONDU_INTRO);
       for (const p of particules) {
+        // Intro : trajet calculé (pas de ressort), le point freine en arrivant à sa place.
+        const avance = (t - p.delai) / DUREE_INTRO;
+        if (avance < 1) {
+          const e = ralentir(Math.max(0, avance));
+          p.x = p.sx + (p.tx - p.sx) * e;
+          p.y = p.sy + (p.ty - p.sy) * e;
+          continue;
+        }
         p.vx += (p.tx - p.x) * p.k;
         p.vy += (p.ty - p.y) * p.k;
         if (pointeur.actif) {
