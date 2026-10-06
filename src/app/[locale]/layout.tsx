@@ -8,6 +8,7 @@ import { siteUrl, cheminLangue } from "@/i18n/site";
 import "../globals.css";
 import Curseur from "@/components/Curseur";
 import Providers from "@/components/Providers";
+import ScriptTheme from "@/components/ScriptTheme";
 import Terminal from "@/components/Terminal";
 
 const syne = Syne({
@@ -77,11 +78,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}`,
-          }}
-        />
+        <ScriptTheme />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}>
         <NextIntlClientProvider>

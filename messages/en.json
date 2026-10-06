@@ -10,8 +10,8 @@
     "contact": "Get in touch"
   },
   "Theme": {
-    "clair": "☀️ Light",
-    "sombre": "🌙 Dark"
+    "clair": "Light",
+    "sombre": "Dark"
   },
   "Services": {
     "titre": "Services",
@@ -57,7 +57,8 @@
       "landing": "Landing page",
       "creatif": "Creative website"
     },
-    "cePortfolio": "This portfolio"
+    "cePortfolio": "This portfolio",
+    "code": "View code"
   },
   "Methode": {
     "titre": "Process",

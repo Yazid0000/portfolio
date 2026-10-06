@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import ThemeToggle from "@/components/ThemeToggle";
 import LangueToggle from "@/components/LangueToggle";
-import Scene3D from "@/components/Scene3D";
+import Scene3D from "@/components/Scene3DDifferee";
 import TexteRevele from "@/components/TexteRevele";
 
 export default function Hero() {

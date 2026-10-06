@@ -38,7 +38,7 @@ function Forme() {
   return (
     <Float speed={reduit ? 0 : 2} floatIntensity={reduit ? 0 : 1.5}>
   <mesh ref={ref} scale={1.6}>
-    <icosahedronGeometry args={[1, 24]} />
+    <icosahedronGeometry args={[1, 10]} />
     <MeshDistortMaterial
       color="#6d5dfc"
       distort={reduit ? 0.2 : 0.45}
@@ -67,7 +67,7 @@ export default function Scene3D() {
     <div ref={conteneur} className="w-full h-full">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
-        dpr={[1, 1.5]}
+        dpr={[1, 1.25]}
         frameloop={visible ? "always" : "never"}
       >
         <ambientLight intensity={0.6} />

@@ -1,13 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
 import { useTranslations } from "next-intl";
 
-const projets: { titre: string; type: "ecommerce" | "app" | "vitrine" | "landing" | "creatif"; stack: string; couleur: string; lien: string }[] = [
+type Projet = {
+  titre: string;
+  type: "ecommerce" | "app" | "vitrine" | "landing" | "creatif";
+  stack: string;
+  couleur: string;
+  lien: string;
+  // Facultatifs : lien vers le code source (seulement si le repo est public) et capture affichée au survol
+  code?: string;
+  image?: string;
+};
+
+const projets: Projet[] = [
   { titre: "Entre Tables", type: "ecommerce", stack: "PHP · MySQL", couleur: "#c8553d", lien: "#" },
   { titre: "ReservSys", type: "app", stack: "PHP · MySQL", couleur: "#2a9d8f", lien: "#" },
-  { titre: "Riad", type: "vitrine", stack: "Next.js · Tailwind", couleur: "#e9c46a", lien: "#" },
+  {
+    titre: "Riad Dar Selma",
+    type: "vitrine",
+    stack: "Next.js · Tailwind",
+    couleur: "#2440a8",
+    lien: "https://riad-dar-selma.vercel.app/",
+    code: "https://github.com/Yazid0000/riad-dar-selma",
+    image: "/projets/riad-dar-selma.jpg",
+  },
   { titre: "Landing SaaS", type: "landing", stack: "Next.js · Tailwind", couleur: "#6d5dfc", lien: "#" },
   { titre: "Dashboard", type: "app", stack: "Next.js · TypeScript", couleur: "#ff4fd8", lien: "#" },
   { titre: "cePortfolio", type: "creatif", stack: "Next.js · Three.js", couleur: "#111111", lien: "https://github.com/Yazid0000/portfolio" },
@@ -17,6 +37,8 @@ export default function Projets() {
   const t = useTranslations("Projets");
   const nom = (titre: string) => (titre === "cePortfolio" ? t("cePortfolio") : titre);
   const [actif, setActif] = useState<number | null>(null);
+  // Vrai quand la souris est sur un lien « Voir le code » : l'aperçu devient transparent pour ne pas le cacher
+  const [surCode, setSurCode] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const xLent = useSpring(x, { stiffness: 200, damping: 25 });
@@ -37,26 +59,43 @@ export default function Projets() {
 
       <ul onMouseLeave={() => setActif(null)}>
         {projets.map((p, i) => (
-          <li key={p.titre} className="border-t border-current/20 last:border-b">
+          <li
+            key={p.titre}
+            onMouseEnter={() => setActif(i)}
+            className={`border-t border-current/20 last:border-b flex flex-col md:flex-row md:items-center justify-between gap-2 py-6 md:py-8 transition-opacity ${
+              actif !== null && actif !== i ? "opacity-30" : ""
+            }`}
+          >
             <a
               href={p.lien}
-              onMouseEnter={() => setActif(i)}
-              className={`group flex flex-col md:flex-row md:items-center justify-between gap-2 py-6 md:py-8 transition-opacity ${
-                actif !== null && actif !== i ? "opacity-30" : ""
-              }`}
+              {...(p.lien.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+              className="group flex items-baseline gap-4"
             >
-              <span className="flex items-baseline gap-4">
-                <span className="text-sm opacity-50">0{i + 1}</span>
-                <span className="font-display font-extrabold text-4xl md:text-7xl tracking-tight transition-transform duration-300 group-hover:translate-x-4">
-                  {nom(p.titre)}
-                </span>
-              </span>
-              <span className="text-sm md:text-right opacity-70">
-                {t(`types.${p.type}`)}
-                <br />
-                {p.stack}
+              <span className="text-sm opacity-50">0{i + 1}</span>
+              <span className="font-display font-extrabold text-4xl md:text-7xl tracking-tight transition-transform duration-300 group-hover:translate-x-4">
+                {nom(p.titre)}
               </span>
             </a>
+            <span className="text-sm md:text-right opacity-70">
+              {t(`types.${p.type}`)}
+              <br />
+              {p.stack}
+              {p.code && (
+                <>
+                  <br />
+                  <a
+                    href={p.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={() => setSurCode(true)}
+                    onMouseLeave={() => setSurCode(false)}
+                    className="underline underline-offset-4 hover:opacity-100"
+                  >
+                    {t("code")} ↗
+                  </a>
+                </>
+              )}
+            </span>
           </li>
         ))}
       </ul>
@@ -65,7 +104,7 @@ export default function Projets() {
         {actif !== null && (
           <motion.div
             key="apercu"
-            className="hidden pointer-fine:flex pointer-events-none fixed top-0 left-0 z-40 w-72 h-48 rounded-2xl items-center justify-center font-display font-bold text-white text-xl"
+            className="hidden pointer-fine:flex pointer-events-none fixed top-0 left-0 z-40 w-96 aspect-[2/1] rounded-2xl overflow-hidden items-center justify-center font-display font-bold text-white text-xl"
             style={{
               x: xLent,
               y: yLent,
@@ -73,11 +112,21 @@ export default function Projets() {
               translateY: "-50%",
             }}
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1, backgroundColor: projets[actif].couleur }}
+            animate={{ scale: 1, opacity: surCode ? 0.15 : 1, backgroundColor: projets[actif].couleur }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {t(`types.${projets[actif].type}`)}
+            {projets[actif].image ? (
+              <Image
+                src={projets[actif].image}
+                alt=""
+                fill
+                sizes="384px"
+                className="object-cover object-left-top"
+              />
+            ) : (
+              t(`types.${projets[actif].type}`)
+            )}
           </motion.div>
         )}
       </AnimatePresence>

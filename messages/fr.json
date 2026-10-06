@@ -10,8 +10,8 @@
     "contact": "Me contacter"
   },
   "Theme": {
-    "clair": "☀️ Clair",
-    "sombre": "🌙 Sombre"
+    "clair": "Clair",
+    "sombre": "Sombre"
   },
   "Services": {
     "titre": "Services",
@@ -57,7 +57,8 @@
       "landing": "Landing page",
       "creatif": "Site créatif"
     },
-    "cePortfolio": "Ce portfolio"
+    "cePortfolio": "Ce portfolio",
+    "code": "Voir le code"
   },
   "Methode": {
     "titre": "Méthode",
