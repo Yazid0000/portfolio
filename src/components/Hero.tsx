@@ -1,8 +1,7 @@
 import { useTranslations } from "next-intl";
 import ThemeToggle from "@/components/ThemeToggle";
 import LangueToggle from "@/components/LangueToggle";
-import Scene3D from "@/components/Scene3DDifferee";
-import TexteRevele from "@/components/TexteRevele";
+import Particules from "@/components/Particules";
 
 export default function Hero() {
   const t = useTranslations("Hero");
@@ -13,7 +12,7 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center gap-6 px-6 text-center overflow-hidden"
     >
       <div className="absolute inset-0">
-        <Scene3D />
+        <Particules />
       </div>
 
       <div className="absolute top-6 right-6 z-20 flex gap-2">
@@ -23,8 +22,10 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center gap-6">
         <p className="text-sm uppercase tracking-widest opacity-60">{t("role")}</p>
-        <h1 className="font-display font-extrabold text-[22vw] md:text-[16vw] leading-none tracking-tight text-black dark:text-white">
-          <TexteRevele texte="YAZID" />
+        {/* Le vrai titre reste dans le HTML (SEO, lecteurs d'écran). Il est transparent :
+            ce sont les particules qui le dessinent. En mouvement réduit, il s'affiche normalement. */}
+        <h1 className="font-display font-extrabold text-[17vw] md:text-[16vw] leading-none tracking-tight motion-safe:text-transparent">
+          YAZID
         </h1>
         <p className="text-xl max-w-xl opacity-80">{t("accroche")}</p>
 

@@ -30,7 +30,7 @@ const projets: Projet[] = [
   },
   { titre: "Landing SaaS", type: "landing", stack: "Next.js · Tailwind", couleur: "#6d5dfc", lien: "#" },
   { titre: "Dashboard", type: "app", stack: "Next.js · TypeScript", couleur: "#ff4fd8", lien: "#" },
-  { titre: "cePortfolio", type: "creatif", stack: "Next.js · Three.js", couleur: "#111111", lien: "https://github.com/Yazid0000/portfolio" },
+  { titre: "cePortfolio", type: "creatif", stack: "Next.js · Canvas", couleur: "#111111", lien: "https://github.com/Yazid0000/portfolio" },
 ];
 
 export default function Projets() {
@@ -72,7 +72,12 @@ export default function Projets() {
               className="group flex items-baseline gap-4"
             >
               <span className="text-sm opacity-50">0{i + 1}</span>
-              <span className="font-display font-extrabold text-4xl md:text-7xl tracking-tight transition-transform duration-300 group-hover:translate-x-4">
+              {/* Fonte variable : le titre survolé reste épais, les autres s'affinent */}
+              <span
+                className={`font-display text-4xl md:text-7xl tracking-tight transition-[translate,font-weight] duration-300 motion-reduce:transition-none group-hover:translate-x-4 ${
+                  actif !== null && actif !== i ? "font-normal" : "font-extrabold"
+                }`}
+              >
                 {nom(p.titre)}
               </span>
             </a>

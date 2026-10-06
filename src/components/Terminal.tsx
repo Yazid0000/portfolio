@@ -1,10 +1,49 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 
 type Ligne = { type: "entree" | "sortie"; texte: string };
+
+// Machine à écrire : la ligne se tape caractère par caractère, avec un curseur qui clignote.
+function LigneTapee({ texte, onFin }: { texte: string; onFin: () => void }) {
+  const reduit = useReducedMotion();
+  const [n, setN] = useState(0);
+  const ref = useRef<HTMLParagraphElement>(null);
+  // Garde : onFin ne doit être appelé qu'une fois, même si l'effet est rejoué (mode strict en dev).
+  const fini = useRef(false);
+  const finir = useEffectEvent(() => {
+    if (fini.current) return;
+    fini.current = true;
+    onFin();
+  });
+
+  useEffect(() => {
+    if (reduit) {
+      finir();
+      return;
+    }
+    let i = 0;
+    const id = setInterval(() => {
+      i += 2;
+      setN(i);
+      ref.current?.scrollIntoView({ block: "nearest" });
+      if (i >= texte.length) {
+        clearInterval(id);
+        finir();
+      }
+    }, 16);
+    return () => clearInterval(id);
+  }, [texte, reduit]);
+
+  return (
+    <p ref={ref}>
+      {reduit ? texte : texte.slice(0, n)}
+      <span aria-hidden className="animate-clignote">▋</span>
+    </p>
+  );
+}
 
 function allerA(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -18,6 +57,8 @@ export default function Terminal() {
     { type: "sortie", texte: t("bienvenue") },
     { type: "sortie", texte: t("aide") },
   ]);
+  // Nombre de lignes de sortie déjà tapées : elles s'affichent en entier, la suivante se tape, les autres attendent.
+  const [finies, setFinies] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const basRef = useRef<HTMLDivElement>(null);
 
@@ -72,6 +113,7 @@ export default function Terminal() {
       }
       case "clear":
         setLignes([]);
+        setFinies(0);
         return;
       case "exit":
         setOuvert(false);
@@ -112,11 +154,22 @@ export default function Terminal() {
             </div>
 
             <div className="h-72 overflow-y-auto p-4 space-y-1">
-              {lignes.map((l, i) => (
-                <p key={i} className={l.type === "entree" ? "text-white" : ""}>
-                  {l.type === "entree" ? `$ ${l.texte}` : l.texte}
-                </p>
-              ))}
+              {(() => {
+                let k = 0; // rang de la ligne parmi les sorties
+                return lignes.map((l, i) => {
+                  if (l.type === "entree") {
+                    return k <= finies ? (
+                      <p key={i} className="text-white">$ {l.texte}</p>
+                    ) : null;
+                  }
+                  const rang = k++;
+                  if (rang < finies) return <p key={i}>{l.texte}</p>;
+                  if (rang === finies) {
+                    return <LigneTapee key={i} texte={l.texte} onFin={() => setFinies((f) => f + 1)} />;
+                  }
+                  return null;
+                });
+              })()}
 
               <form
                 className="flex gap-2"

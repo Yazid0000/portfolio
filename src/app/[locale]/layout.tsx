@@ -13,7 +13,6 @@ import Terminal from "@/components/Terminal";
 
 const syne = Syne({
   subsets: ["latin"],
-  weight: ["700", "800"],
   variable: "--font-syne",
 });
 

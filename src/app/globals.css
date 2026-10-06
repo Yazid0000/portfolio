@@ -18,6 +18,13 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-syne);
+  --animate-clignote: clignote 1s steps(1) infinite;
+}
+
+@keyframes clignote {
+  50% {
+    opacity: 0;
+  }
 }
 
 body {

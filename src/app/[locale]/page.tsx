@@ -16,10 +16,10 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
   return (
     <main className="bg-white text-black dark:bg-black dark:text-white transition-colors">
       <Hero />
-      <Reveal><Services /></Reveal>
+      <Services />
       <Reveal><Projets /></Reveal>
-      <Reveal><Methode /></Reveal>
-      <Reveal><Competences /></Reveal>
+      <Methode />
+      <Competences />
       <Reveal><APropos /></Reveal>
       <Reveal><Contact /></Reveal>
     </main>
