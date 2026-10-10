@@ -28,7 +28,15 @@ const projets: Projet[] = [
     code: "https://github.com/Yazid0000/riad-dar-selma",
     image: "/projets/riad-dar-selma.jpg",
   },
-  { titre: "Landing SaaS", type: "landing", stack: "Next.js · Tailwind", couleur: "#6d5dfc", lien: "#" },
+  {
+    titre: "Soldé",
+    type: "landing",
+    stack: "Next.js · Motion",
+    couleur: "#0b7a4b",
+    lien: "https://solde-landing.vercel.app/",
+    code: "https://github.com/Yazid0000/Sold-",
+    image: "/projets/solde.jpg",
+  },
   { titre: "Dashboard", type: "app", stack: "Next.js · TypeScript", couleur: "#ff4fd8", lien: "#" },
   {
     titre: "cePortfolio",
