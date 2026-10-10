@@ -33,7 +33,7 @@ const projets: Projet[] = [
     type: "landing",
     stack: "Next.js · Motion",
     couleur: "#0b7a4b",
-    lien: "https://solde-landing.vercel.app/",
+    lien: "https://sold-five.vercel.app/",
     code: "https://github.com/Yazid0000/Sold-",
     image: "/projets/solde.jpg",
   },
