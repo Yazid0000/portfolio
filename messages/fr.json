@@ -1,12 +1,12 @@
 {
   "Meta": {
-    "title": "Yazid | Développeur web",
-    "description": "Sites vitrine, e-commerce et applications web sur mesure."
+    "title": "Yazid Bennouna · Développeur web freelance au Maroc",
+    "description": "Sites vitrine, boutiques en ligne et applications web sur mesure, pour le Maroc et l'international. Livrés en quelques jours."
   },
   "Hero": {
     "role": "Développeur web freelance",
-    "accroche": "Je conçois et développe des sites et applications web sur mesure, livrés en quelques jours.",
-    "voirProjets": "Voir mes projets",
+    "accroche": "Des sites et applications web sur mesure pour les entreprises et commerçants, au Maroc et à l'international. Livrés en quelques jours.",
+    "voirProjets": "Voir mes réalisations",
     "contact": "Me contacter"
   },
   "Theme": {
@@ -18,47 +18,57 @@
     "liste": [
       {
         "titre": "Site vitrine",
-        "description": "Présentez votre activité avec un site rapide, moderne et bien référencé.",
+        "description": "Un site qui présente votre activité et donne envie de vous contacter.",
         "points": [
-          "Design sur mesure",
-          "Responsive mobile",
-          "SEO de base",
+          "Design à votre image",
+          "Parfait sur téléphone",
+          "Référencement Google de base",
           "Formulaire de contact"
         ]
       },
       {
         "titre": "E-commerce",
-        "description": "Vendez en ligne avec une boutique simple à gérer.",
+        "description": "Une boutique en ligne simple à gérer, même sans être technicien.",
         "points": [
-          "Catalogue produits",
-          "Panier et paiement",
-          "Gestion des commandes",
-          "Mobile-first"
+          "Vos produits en ligne",
+          "Panier et paiement en ligne",
+          "Suivi des commandes",
+          "Pensée pour le téléphone"
         ]
       },
       {
         "titre": "Application web",
-        "description": "Automatisez votre activité avec un outil adapté à vos besoins.",
+        "description": "Un outil sur mesure pour gagner du temps au quotidien.",
         "points": [
-          "Réservations",
-          "Back-office",
-          "Comptes utilisateurs",
-          "Base de données"
+          "Réservations en ligne",
+          "Espace d'administration",
+          "Comptes clients",
+          "Vos données au même endroit"
         ]
       }
     ]
   },
   "Projets": {
-    "titre": "Projets sélectionnés",
+    "titre": "Réalisations",
     "types": {
       "ecommerce": "E-commerce",
       "app": "Application web",
       "vitrine": "Site vitrine",
-      "landing": "Landing page",
+      "landing": "Page de présentation",
       "creatif": "Site créatif"
     },
     "cePortfolio": "Ce portfolio",
-    "code": "Voir le code"
+    "code": "Voir le code",
+    "site": "Voir le site",
+    "precedent": "Projet précédent",
+    "suivant": "Projet suivant",
+    "aide": "Faites glisser pour tourner",
+    "demo": "Projet de démonstration",
+    "descriptions": {
+      "riad": "Site d'un riad de six chambres dans la médina de Marrakech : les chambres, les expériences et une demande de réservation directe.",
+      "solde": "Page de présentation d'un outil qui relance les factures impayées à la place de l'entrepreneur.",
+      "portfolio": "Le site que vous visitez : un nom en particules, un carrousel en 3D et un terminal caché."
+    }
   },
   "Methode": {
     "titre": "Méthode",
@@ -85,37 +95,42 @@
       }
     ]
   },
-  "Competences": {
-    "titre": "Compétences",
-    "outils": "Outils"
-  },
   "APropos": {
     "titre": "À propos",
     "paragraphes": [
-      "Je m'appelle Yazid, je suis développeur web basé au Maroc.",
-      "Je crée des sites et des applications web pour des entreprises, des commerçants et des artisans, au Maroc et à l'international.",
-      "Mon objectif : des sites rapides, beaux et simples à utiliser, livrés vite."
-    ]
+      "Je m'appelle Yazid, développeur web freelance basé au Maroc.",
+      "Je travaille en français et en anglais, et je reste joignable directement, par email ou sur WhatsApp."
+    ],
+    "competences": "Compétences",
+    "outils": "Outils"
   },
   "Contact": {
     "titre": "Un projet en tête ?",
-    "sousTitre": "Parlons-en. Réponse sous 24 h.",
+    "sousTitre": "Parlons-en. Je réponds sous 24 h.",
     "form": {
       "nom": "Nom",
       "email": "Email",
-      "message": "Votre projet en quelques lignes",
-      "envoyer": "Envoyer",
-      "envoi": "Envoi...",
-      "succes": "Merci ! Votre message est bien parti. Je vous réponds sous 24 h.",
-      "erreurChamps": "Merci de remplir tous les champs avec un email valide.",
-      "erreurEnvoi": "L'envoi a échoué. Écrivez-moi directement par email ou WhatsApp.",
-      "ou": "ou directement"
-    }
+      "message": "Votre projet",
+      "envoyer": "Envoyer le message",
+      "envoi": "Envoi en cours…",
+      "succes": "Merci, votre message est bien parti. Je vous réponds sous 24 h à l'adresse indiquée.",
+      "erreurChamps": "Certains champs sont à compléter : voir les indications ci-dessus.",
+      "erreurEnvoi": "Le message n'est pas parti à cause d'un problème technique. Écrivez-moi sur WhatsApp ou par email : je vous réponds aussi vite.",
+      "nomExemple": "Votre nom",
+      "emailExemple": "vous@exemple.com",
+      "messageExemple": "Votre activité, ce dont vous avez besoin, vos délais…",
+      "erreurNom": "Indiquez votre nom.",
+      "erreurEmail": "Indiquez un email valide, par exemple vous@exemple.com.",
+      "erreurMessage": "Décrivez votre projet en quelques mots."
+    },
+    "whatsapp": "Écrire sur WhatsApp",
+    "email": "Envoyer un email",
+    "ou": "ou laissez un message ici"
   },
   "Terminal": {
-    "astuce": "Appuie sur ² ou `",
+    "astuce": "Terminal caché : touche ² ou `",
     "bienvenue": "Bienvenue dans le terminal de Yazid.",
-    "aide": "Tape 'help' pour voir les commandes.",
+    "aide": "Tapez 'help' pour voir les commandes.",
     "commandes": [
       "about     → qui je suis",
       "projets   → voir mes projets",
@@ -133,7 +148,18 @@
     "themeActive": "Thème {theme} activé.",
     "sombre": "sombre",
     "clair": "clair",
-    "inconnue": "Commande inconnue : {cmd}. Tape 'help'.",
+    "inconnue": "Commande inconnue : {cmd}. Tapez 'help'.",
     "label": "Commande du terminal"
+  },
+  "Navigation": {
+    "evitement": "Aller au contenu",
+    "menu": "Navigation principale",
+    "services": "Services",
+    "realisations": "Réalisations",
+    "methode": "Méthode",
+    "contact": "Contact",
+    "haut": "Haut de page",
+    "lieu": "Développeur web freelance au Maroc",
+    "plan": "Plan du site"
   }
 }

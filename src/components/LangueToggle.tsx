@@ -31,7 +31,7 @@ export default function LangueToggle() {
           scroll={false}
           onClick={() => setChoisie(code)}
           aria-current={code === locale ? "true" : undefined}
-          className={`relative px-3 py-2 text-center transition-[color,opacity] ${anim} ${
+          className={`relative flex items-center justify-center px-3 py-2 pointer-coarse:min-h-11 transition-[color,opacity] ${anim} ${
             code === choisie ? "text-white dark:text-black" : "opacity-60"
           }`}
         >

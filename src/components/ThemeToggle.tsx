@@ -21,7 +21,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={basculer}
-      className="grid overflow-hidden px-4 py-2 rounded-full border border-current text-sm"
+      className="grid overflow-hidden px-4 py-2 pointer-coarse:min-h-11 rounded-full border border-current text-sm"
     >
       {/* Mode clair : propose de passer en sombre (lune) */}
       <span className={`${anim} dark:-translate-y-full dark:opacity-0 dark:invisible`}>

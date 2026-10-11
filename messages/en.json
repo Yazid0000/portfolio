@@ -1,11 +1,11 @@
 {
   "Meta": {
-    "title": "Yazid | Web developer",
-    "description": "Custom websites, online stores and web applications."
+    "title": "Yazid Bennouna · Freelance web developer based in Morocco",
+    "description": "Custom websites, online stores and web apps for clients in Morocco and abroad. Delivered in days."
   },
   "Hero": {
     "role": "Freelance web developer",
-    "accroche": "I design and build custom websites and web apps, delivered in days.",
+    "accroche": "Custom websites and web apps for businesses and shops, in Morocco and abroad. Delivered in days.",
     "voirProjets": "See my work",
     "contact": "Get in touch"
   },
@@ -18,38 +18,38 @@
     "liste": [
       {
         "titre": "Business website",
-        "description": "Showcase your business with a fast, modern, search-friendly website.",
+        "description": "A website that presents your business and makes people want to reach out.",
         "points": [
-          "Custom design",
-          "Mobile responsive",
-          "Basic SEO",
+          "Designed around your brand",
+          "Flawless on phones",
+          "Basic Google visibility",
           "Contact form"
         ]
       },
       {
         "titre": "E-commerce",
-        "description": "Sell online with a store that's easy to manage.",
+        "description": "An online store that's easy to run, no technical skills needed.",
         "points": [
-          "Product catalog",
-          "Cart and payment",
-          "Order management",
-          "Mobile-first"
+          "Your products online",
+          "Cart and online payment",
+          "Order tracking",
+          "Built for phones"
         ]
       },
       {
         "titre": "Web application",
-        "description": "Automate your business with a tool built around your needs.",
+        "description": "A custom tool that saves you time every day.",
         "points": [
-          "Bookings",
-          "Admin dashboard",
-          "User accounts",
-          "Database"
+          "Online bookings",
+          "Admin area",
+          "Customer accounts",
+          "All your data in one place"
         ]
       }
     ]
   },
   "Projets": {
-    "titre": "Selected work",
+    "titre": "Work",
     "types": {
       "ecommerce": "E-commerce",
       "app": "Web application",
@@ -58,7 +58,17 @@
       "creatif": "Creative website"
     },
     "cePortfolio": "This portfolio",
-    "code": "View code"
+    "code": "View code",
+    "site": "View site",
+    "precedent": "Previous project",
+    "suivant": "Next project",
+    "aide": "Drag to rotate",
+    "demo": "Demo project",
+    "descriptions": {
+      "riad": "Website for a six-room riad in the Marrakech medina: the rooms, the experiences and a direct booking request.",
+      "solde": "Landing page for a tool that chases unpaid invoices on the business owner's behalf.",
+      "portfolio": "The site you're on: a name made of particles, a 3D carousel and a hidden terminal."
+    }
   },
   "Methode": {
     "titre": "Process",
@@ -85,35 +95,40 @@
       }
     ]
   },
-  "Competences": {
-    "titre": "Skills",
-    "outils": "Tools"
-  },
   "APropos": {
     "titre": "About",
     "paragraphes": [
-      "I'm Yazid, a web developer based in Morocco.",
-      "I build websites and web apps for businesses, shops and artisans, in Morocco and abroad.",
-      "My goal: fast, beautiful, easy-to-use websites, delivered quickly."
-    ]
+      "I'm Yazid, a freelance web developer based in Morocco.",
+      "I work in French and English, and you can reach me directly, by email or on WhatsApp."
+    ],
+    "competences": "Skills",
+    "outils": "Tools"
   },
   "Contact": {
     "titre": "Got a project in mind?",
-    "sousTitre": "Let's talk. Reply within 24 hours.",
+    "sousTitre": "Let's talk. I reply within 24 hours.",
     "form": {
       "nom": "Name",
       "email": "Email",
-      "message": "Your project in a few lines",
-      "envoyer": "Send",
-      "envoi": "Sending...",
-      "succes": "Thanks! Your message is on its way. I'll reply within 24 hours.",
-      "erreurChamps": "Please fill in every field with a valid email.",
-      "erreurEnvoi": "Sending failed. Email me directly or reach me on WhatsApp.",
-      "ou": "or directly"
-    }
+      "message": "Your project",
+      "envoyer": "Send message",
+      "envoi": "Sending…",
+      "succes": "Thanks, your message is on its way. I'll reply within 24 hours at the address you gave.",
+      "erreurChamps": "Some fields need attention: see the hints above.",
+      "erreurEnvoi": "Your message didn't go through because of a technical problem. Reach me on WhatsApp or by email: I'll reply just as fast.",
+      "nomExemple": "Your name",
+      "emailExemple": "you@example.com",
+      "messageExemple": "Your business, what you need, your timeline…",
+      "erreurNom": "Enter your name.",
+      "erreurEmail": "Enter a valid email, for example you@example.com.",
+      "erreurMessage": "Describe your project in a few words."
+    },
+    "whatsapp": "Message me on WhatsApp",
+    "email": "Send an email",
+    "ou": "or leave a message here"
   },
   "Terminal": {
-    "astuce": "Press ` or ²",
+    "astuce": "Hidden terminal: press ² or `",
     "bienvenue": "Welcome to Yazid's terminal.",
     "aide": "Type 'help' to see the commands.",
     "commandes": [
@@ -135,5 +150,16 @@
     "clair": "Light",
     "inconnue": "Unknown command: {cmd}. Type 'help'.",
     "label": "Terminal command"
+  },
+  "Navigation": {
+    "evitement": "Skip to content",
+    "menu": "Main navigation",
+    "services": "Services",
+    "realisations": "Work",
+    "methode": "Process",
+    "contact": "Contact",
+    "haut": "Back to top",
+    "lieu": "Freelance web developer based in Morocco",
+    "plan": "Site map"
   }
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -34,6 +34,14 @@ type Props = {
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
+
+// Couleur de la barre du navigateur mobile, selon le thème du système.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+};
 
 export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
   const { locale } = await params;
@@ -73,13 +81,26 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound();
   }
   setRequestLocale(locale);
+  const n = await getTranslations({ locale, namespace: "Navigation" });
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    // Les variables de police sont sur <html> : Tailwind y applique la police par défaut (Geist).
+    <html
+      lang={locale}
+      className={`${geistSans.variable} ${geistMono.variable} ${syne.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <ScriptTheme />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}>
+      <body className="antialiased">
+        {/* Lien d'évitement : premier arrêt du clavier, visible seulement au focus */}
+        <a
+          href="#contenu"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:px-5 focus:py-3 focus:rounded-full focus:bg-black focus:text-white dark:focus:bg-white dark:focus:text-black"
+        >
+          {n("evitement")}
+        </a>
         <NextIntlClientProvider>
           <Providers>
             <Curseur />

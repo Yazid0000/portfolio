@@ -2,9 +2,19 @@ import { useTranslations } from "next-intl";
 import ThemeToggle from "@/components/ThemeToggle";
 import LangueToggle from "@/components/LangueToggle";
 import Particules from "@/components/Particules";
+import { plein, contour } from "@/components/boutons";
+
+// Sections de la navigation : [ancre, clé de traduction]
+export const liens = [
+  ["services", "services"],
+  ["projets", "realisations"],
+  ["methode", "methode"],
+  ["contact", "contact"],
+] as const;
 
 export default function Hero() {
   const t = useTranslations("Hero");
+  const n = useTranslations("Navigation");
 
   return (
     <section
@@ -15,10 +25,20 @@ export default function Hero() {
         <Particules />
       </div>
 
-      <div className="absolute top-6 right-6 z-20 flex gap-2">
-        <LangueToggle />
-        <ThemeToggle />
-      </div>
+      <header className="absolute top-6 inset-x-6 z-20 flex items-center gap-6">
+        {/* Sur mobile, la navigation est dans le pied de page : ici, la place va aux réglages. */}
+        <nav aria-label={n("menu")} className="hidden md:flex gap-6 text-sm">
+          {liens.map(([id, cle]) => (
+            <a key={id} href={`#${id}`} className="py-2 opacity-70 hover:opacity-100 transition-opacity">
+              {n(cle)}
+            </a>
+          ))}
+        </nav>
+        <div className="ml-auto flex gap-2">
+          <LangueToggle />
+          <ThemeToggle />
+        </div>
+      </header>
 
       <div className="relative z-10 flex flex-col items-center gap-6">
         <p className="text-sm uppercase tracking-widest opacity-60">{t("role")}</p>
@@ -32,11 +52,11 @@ export default function Hero() {
         <div className="flex flex-wrap justify-center gap-4">
           <a
             href="#projets"
-            className="px-6 py-3 rounded-full bg-black text-white dark:bg-white dark:text-black"
+            className={`${plein} px-6 py-3`}
           >
             {t("voirProjets")}
           </a>
-          <a href="#contact" className="px-6 py-3 rounded-full border border-current">
+          <a href="#contact" className={`${contour} px-6 py-3`}>
             {t("contact")}
           </a>
         </div>

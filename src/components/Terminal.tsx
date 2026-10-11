@@ -64,7 +64,10 @@ export default function Terminal() {
 
   useEffect(() => {
     const touche = (e: KeyboardEvent) => {
-      if (e.key === "`" || e.key === "²") {
+      // Dans un champ (formulaire de contact…), ² et ` s'écrivent normalement : le terminal ne vole pas la saisie.
+      const cible = e.target as HTMLElement;
+      const ecrit = cible.closest("input, textarea, select, [contenteditable='true']") && cible !== inputRef.current;
+      if ((e.key === "`" || e.key === "²") && !ecrit) {
         e.preventDefault();
         setOuvert((o) => !o);
       }
@@ -133,7 +136,7 @@ export default function Terminal() {
 
   return (
     <>
-      <p className="hidden md:block fixed bottom-4 left-4 z-30 text-xs font-mono opacity-40">
+      <p className="hidden md:block fixed bottom-4 left-4 z-30 text-xs font-mono opacity-60">
         {t("astuce")}
       </p>
 

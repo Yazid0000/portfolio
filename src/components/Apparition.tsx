@@ -5,7 +5,6 @@ import { motion, type Variants } from "motion/react";
 const sens = {
   haut: { cache: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } },
   gauche: { cache: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } } },
-  zoom: { cache: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } } },
 } satisfies Record<string, Variants>;
 
 const balises = { div: motion.div, li: motion.li, span: motion.span, h2: motion.h2, h3: motion.h3 };

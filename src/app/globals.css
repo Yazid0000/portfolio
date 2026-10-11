@@ -27,9 +27,27 @@
   }
 }
 
+html {
+  accent-color: var(--foreground);
+  caret-color: var(--foreground);
+  scrollbar-color: color-mix(in srgb, var(--foreground) 35%, transparent) var(--background);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Sélection : encre et papier s'échangent, comme entre les deux thèmes */
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* Focus clavier : anneau d'encre détaché de l'élément, visible sur les pilules pleines comme sur le fond */
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
 }
 
 @media (pointer: fine) {

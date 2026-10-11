@@ -35,12 +35,12 @@ export default function EtapesMethode({ etapes }: { etapes: Etape[] }) {
 }
 
 function Numero({ n, seuil, progres, reduit }: { n: number; seuil: number; progres: MotionValue<number>; reduit: boolean }) {
-  const opacite = useTransform(progres, [seuil, seuil + 0.05], [0.3, 1]);
+  const opacite = useTransform(progres, [seuil, seuil + 0.05], [0.45, 1]);
 
   // Le fond masque la ligne derrière le numéro.
   return (
     <span className="relative w-14 shrink-0 text-center bg-white dark:bg-black transition-colors">
-      <motion.span style={{ opacity: reduit ? 1 : opacite }} className="text-4xl font-bold">
+      <motion.span style={{ opacity: reduit ? 1 : opacite }} className="text-2xl font-medium tabular-nums">
         0{n + 1}
       </motion.span>
     </span>
