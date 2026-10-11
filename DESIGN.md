@@ -202,7 +202,7 @@ Des pilules franches, sans ombre ni dégradé.
 Les captures des projets (format 2:1) forment les faces d'un prisme en CSS 3D, une face par projet. Il pivote avec les flèches, le clavier ou en le faisant glisser, avec un léger rebond à l'arrivée ; les faces qui s'éloignent s'assombrissent. À côté, le compteur, le nom du projet et sa description défilent dans le sens de la rotation.
 
 ### Particules du Hero (signature)
-Le nom « YAZID » est formé de 1 500 à 2 500 points, en encre avec quelques étincelles violettes. Ils arrivent en vague et en fondu au chargement, fuient la souris et se dispersent au clic. Le vrai titre reste dans le HTML, transparent.
+Le nom « YAZID » est formé de 1 500 à 2 500 points, en encre avec quelques étincelles violettes. Ils arrivent en vague et en fondu au chargement, fuient la souris (ou le doigt posé) et se dispersent au clic ou au toucher. Sur écran tactile, le nom se dissout en nuage quand on fait défiler la page et se reforme en remontant. Le vrai titre reste dans le HTML, transparent.
 
 ### Terminal
 Panneau flottant en noir terminal, coins de 12px, texte vert phosphore en Geist Mono, trois pastilles de fenêtre ; les réponses se tapent lettre par lettre avec un curseur qui clignote. Ouvert avec la touche ² ou `.

@@ -27,7 +27,8 @@ const rand = (n: number) => {
 };
 
 // Le nom est dessiné en particules par-dessus le vrai <h1> (rendu transparent, gardé pour le SEO).
-// Les points fuient la souris, se dispersent au clic et reviennent toujours à leur place.
+// Les points fuient la souris (ou le doigt), se dispersent au clic et reviennent toujours à leur place.
+// Sur écran tactile, le nom se dissout aussi en nuage quand on fait défiler la page, et se reforme en remontant.
 // Mouvement réduit : rien n'est dessiné et le <h1> reste visible (classe motion-safe du Hero).
 export default function Particules() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -45,6 +46,8 @@ export default function Particules() {
     let particules: Particule[] = [];
     let couleur = "#000";
     const pointeur = { x: 0, y: 0, actif: false };
+    // Écran tactile : pas de souris, c'est le défilement qui fait vivre le nom (il se dissout en descendant).
+    const tactile = matchMedia("(pointer: coarse)").matches;
     let raf = 0;
     let debut = -Infinity; // début de l'intro (-Infinity : pas d'intro)
     let visible = true;
@@ -127,7 +130,9 @@ export default function Particules() {
       ctx!.clearRect(0, 0, W, H);
       const R = Math.max(70, Math.min(W, H) * 0.12), R2 = R * R;
       const t = performance.now() - debut;
-      ctx!.globalAlpha = Math.min(1, t / FONDU_INTRO);
+      // Tactile : 0 quand le Hero est en place, 1 quand il est remonté de 60 % de sa hauteur.
+      const dissolution = tactile ? Math.min(1, Math.max(0, -zone!.getBoundingClientRect().top / (H * 0.6))) : 0;
+      ctx!.globalAlpha = Math.min(1, t / FONDU_INTRO) * (1 - dissolution * 0.5);
       for (const p of particules) {
         // Intro : trajet calculé (pas de ressort), le point freine en arrivant à sa place.
         const avance = (t - p.delai) / DUREE_INTRO;
@@ -137,8 +142,11 @@ export default function Particules() {
           p.y = p.sy + (p.ty - p.sy) * e;
           continue;
         }
-        p.vx += (p.tx - p.x) * p.k;
-        p.vy += (p.ty - p.y) * p.k;
+        // La cible glisse de la lettre vers le nuage de départ de l'intro : le ressort suit en douceur.
+        const cx = p.tx + (p.sx - p.tx) * dissolution;
+        const cy = p.ty + (p.sy - p.ty) * dissolution;
+        p.vx += (cx - p.x) * p.k;
+        p.vy += (cy - p.y) * p.k;
         if (pointeur.actif) {
           const dx = p.x - pointeur.x, dy = p.y - pointeur.y;
           const d2 = dx * dx + dy * dy;
@@ -173,21 +181,27 @@ export default function Particules() {
       pointeur.x = e.clientX - rect.left;
       pointeur.y = e.clientY - rect.top;
     };
-    // Souris : les points fuient le curseur. Toucher : seulement la dispersion, pour ne pas gêner le défilement.
+    // Souris : les points fuient le curseur. Doigt : ils le fuient tant qu'il reste posé ; un glissement
+    // vertical rend la main au défilement du navigateur (pointercancel), un glissement horizontal reste à nous.
+    let doigt = false;
     const bouger = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") return;
+      if (e.pointerType !== "mouse" && !doigt) return;
       position(e);
       pointeur.actif = true;
     };
-    const sortir = () => { pointeur.actif = false; };
+    const sortir = () => { pointeur.actif = false; doigt = false; };
     const appuyer = (e: PointerEvent) => {
       if ((e.target as HTMLElement).closest("a, button")) return;
       position(e);
-      disperser(pointeur.x, pointeur.y, 38);
+      // Force proportionnelle à la largeur : sur téléphone, les points restent à l'écran.
+      disperser(pointeur.x, pointeur.y, 38 * Math.min(1, Math.max(0.45, W / 1200)));
+      if (e.pointerType !== "mouse") { doigt = true; pointeur.actif = true; }
     };
     zone.addEventListener("pointermove", bouger);
     zone.addEventListener("pointerleave", sortir);
     zone.addEventListener("pointerdown", appuyer);
+    zone.addEventListener("pointerup", sortir);
+    zone.addEventListener("pointercancel", sortir);
 
     // Pause quand le Hero n'est plus à l'écran.
     const io = new IntersectionObserver(([e]) => {
@@ -200,9 +214,14 @@ export default function Particules() {
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
     let minuteur: ReturnType<typeof setTimeout>;
+    // Sur mobile, la barre d'adresse qui se replie déclenche "resize" sans changer la taille du Hero :
+    // on ne reconstruit que si le canvas a vraiment changé, sinon les points sauteraient à leur place.
     const redimensionner = () => {
       clearTimeout(minuteur);
-      minuteur = setTimeout(() => construire(false), 150);
+      minuteur = setTimeout(() => {
+        const rect = canvas.getBoundingClientRect();
+        if (Math.round(rect.width) !== W || Math.round(rect.height) !== H) construire(false);
+      }, 150);
     };
     addEventListener("resize", redimensionner);
 
@@ -224,6 +243,8 @@ export default function Particules() {
       zone.removeEventListener("pointermove", bouger);
       zone.removeEventListener("pointerleave", sortir);
       zone.removeEventListener("pointerdown", appuyer);
+      zone.removeEventListener("pointerup", sortir);
+      zone.removeEventListener("pointercancel", sortir);
     };
   }, []);
 

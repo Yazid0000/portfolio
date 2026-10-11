@@ -19,7 +19,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center gap-6 px-6 text-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center gap-6 px-6 text-center overflow-hidden touch-pan-y"
     >
       <div className="absolute inset-0">
         <Particules />
