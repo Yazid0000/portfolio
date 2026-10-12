@@ -28,7 +28,7 @@ const rand = (n: number) => {
 
 // Le nom est dessiné en particules par-dessus le vrai <h1> (rendu transparent, gardé pour le SEO).
 // Les points fuient la souris (ou le doigt), se dispersent au clic et reviennent toujours à leur place.
-// Sur écran tactile, le nom se dissout aussi en nuage quand on fait défiler la page, et se reforme en remontant.
+// Le nom se dissout aussi en nuage quand on fait défiler la page, et se reforme en remontant.
 // Mouvement réduit : rien n'est dessiné et le <h1> reste visible (classe motion-safe du Hero).
 export default function Particules() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -46,8 +46,6 @@ export default function Particules() {
     let particules: Particule[] = [];
     let couleur = "#000";
     const pointeur = { x: 0, y: 0, actif: false };
-    // Écran tactile : pas de souris, c'est le défilement qui fait vivre le nom (il se dissout en descendant).
-    const tactile = matchMedia("(pointer: coarse)").matches;
     let raf = 0;
     let debut = -Infinity; // début de l'intro (-Infinity : pas d'intro)
     let visible = true;
@@ -130,8 +128,8 @@ export default function Particules() {
       ctx!.clearRect(0, 0, W, H);
       const R = Math.max(70, Math.min(W, H) * 0.12), R2 = R * R;
       const t = performance.now() - debut;
-      // Tactile : 0 quand le Hero est en place, 1 quand il est remonté de 60 % de sa hauteur.
-      const dissolution = tactile ? Math.min(1, Math.max(0, -zone!.getBoundingClientRect().top / (H * 0.6))) : 0;
+      // Défilement : 0 quand le Hero est en place, 1 quand il est remonté de 60 % de sa hauteur.
+      const dissolution = Math.min(1, Math.max(0, -zone!.getBoundingClientRect().top / (H * 0.6)));
       ctx!.globalAlpha = Math.min(1, t / FONDU_INTRO) * (1 - dissolution * 0.5);
       for (const p of particules) {
         // Intro : trajet calculé (pas de ressort), le point freine en arrivant à sa place.
