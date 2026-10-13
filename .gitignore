@@ -42,3 +42,6 @@ next-env.d.ts
 
 # graphify (graphe du code, reconstruit avec `graphify update .`)
 /graphify-out/
+
+# Réglages personnels de Claude Code (hooks graphify)
+/.claude/settings.local.json
