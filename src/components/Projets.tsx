@@ -18,7 +18,9 @@ import { Fleche, Sortie } from "@/components/Icones";
 const n = projets.length;
 const PAS = 360 / n; // angle entre deux faces du prisme
 // Distance du centre du prisme à une face, en largeurs de face : apothème d'un polygone à n côtés.
-const APOTHEME = n > 2 ? 0.5 / Math.tan(Math.PI / n) : 0;
+// Arrondie : Math.tan peut différer à la 16e décimale entre Node et le navigateur, et le style
+// rendu côté serveur ne correspondrait plus à celui du client (erreur d'hydratation).
+const APOTHEME = n > 2 ? Math.round((0.5 / Math.tan(Math.PI / n)) * 1e4) / 1e4 : 0;
 // Rotation avec un léger rebond à l'arrivée.
 const RESSORT = { type: "spring", stiffness: 110, damping: 14 } as const;
 
@@ -144,9 +146,12 @@ export default function Projets() {
       {/* Sur mobile, les flèches suivent directement le prisme : on change de projet sans le perdre de vue.
           Sur ordinateur, elles reviennent sous le texte, dans la colonne de droite. */}
       <div className="grid gap-y-6 md:grid-cols-[3fr_2fr] md:gap-x-16 md:gap-y-9">
-        {/* La scène : la largeur d'une face (--w) sert aussi à placer les faces en profondeur. */}
+        {/* La scène : la largeur d'une face (--w) sert aussi à placer les faces en profondeur.
+            Elle découpe ce qui dépasse : au repos, seul le projet actif est visible (les faces voisines,
+            inclinées et assombries, paraissaient floues et débordaient sur le texte) ; en tournant, les faces
+            défilent dans le cadre. */}
         <div
-          className="@container cursor-grab active:cursor-grabbing touch-pan-y md:row-span-2 md:self-center"
+          className="@container overflow-hidden rounded-xl cursor-grab active:cursor-grabbing touch-pan-y md:row-span-2 md:self-center"
           onPointerDown={appuyer}
           onPointerMove={bouger}
           onPointerUp={lacher}
@@ -202,16 +207,19 @@ export default function Projets() {
             </Defile>
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
-            <a
-              href={p.lien}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${plein} px-5 py-3`}
-            >
-              {t("site")} <Sortie />
-            </a>
+            {p.lien && (
+              <a
+                href={p.lien}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${plein} px-5 py-3`}
+              >
+                {t("site")} <Sortie />
+              </a>
+            )}
+            {/* Sans site en ligne, le code devient le bouton principal */}
             {p.code && (
-              <a href={p.code} target="_blank" rel="noopener noreferrer" className={`${contour} px-5 py-3`}>
+              <a href={p.code} target="_blank" rel="noopener noreferrer" className={`${p.lien ? contour : plein} px-5 py-3`}>
                 {t("code")} <Sortie />
               </a>
             )}

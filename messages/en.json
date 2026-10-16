@@ -55,7 +55,8 @@
       "app": "Web application",
       "vitrine": "Business website",
       "landing": "Landing page",
-      "creatif": "Creative website"
+      "creatif": "Creative website",
+      "infra": "Infrastructure"
     },
     "cePortfolio": "This portfolio",
     "code": "View code",
@@ -67,6 +68,8 @@
     "descriptions": {
       "riad": "Website for a six-room riad in the Marrakech medina: the rooms, the experiences and a direct booking request.",
       "solde": "Landing page for a tool that chases unpaid invoices on the business owner's behalf.",
+      "nourargan": "Back office for an argan cosmetics shop: orders, stock and photos managed from a phone, with separate manager and packer access.",
+      "homelab": "An old gaming laptop turned home server: fifteen self-hosted services running on Docker, reachable from anywhere through a VPN, with no open port.",
       "portfolio": "The site you're on: a name made of particles, a 3D carousel and a hidden terminal."
     }
   },

@@ -55,7 +55,8 @@
       "app": "Application web",
       "vitrine": "Site vitrine",
       "landing": "Page de présentation",
-      "creatif": "Site créatif"
+      "creatif": "Site créatif",
+      "infra": "Infrastructure"
     },
     "cePortfolio": "Ce portfolio",
     "code": "Voir le code",
@@ -67,6 +68,8 @@
     "descriptions": {
       "riad": "Site d'un riad de six chambres dans la médina de Marrakech : les chambres, les expériences et une demande de réservation directe.",
       "solde": "Page de présentation d'un outil qui relance les factures impayées à la place de l'entrepreneur.",
+      "nourargan": "Back-office d'une boutique de cosmétiques à l'argan : commandes, stock et photos gérés depuis le téléphone, avec un accès gérante et un accès préparateur.",
+      "homelab": "Un vieux PC portable devenu serveur maison : une quinzaine de services auto-hébergés avec Docker, accessibles de partout par VPN, sans aucun port ouvert.",
       "portfolio": "Le site que vous visitez : un nom en particules, un carrousel en 3D et un terminal caché."
     }
   },
