@@ -100,8 +100,10 @@
   },
   "APropos": {
     "titre": "À propos",
+    "photo": "Portrait de Yazid Bennouna",
     "paragraphes": [
-      "Je m'appelle Yazid, développeur web freelance basé au Maroc.",
+      "Je m'appelle Yazid, développeur web freelance basé au Maroc. Vous parlez directement à la personne qui construit votre site, du premier échange à la mise en ligne.",
+      "Pas de modèle tout fait : chaque site a sa propre identité, pensée pour votre activité et vos clients.",
       "Je travaille en français et en anglais, et je reste joignable directement, par email ou sur WhatsApp."
     ],
     "competences": "Compétences",

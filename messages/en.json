@@ -100,8 +100,10 @@
   },
   "APropos": {
     "titre": "About",
+    "photo": "Portrait of Yazid Bennouna",
     "paragraphes": [
-      "I'm Yazid, a freelance web developer based in Morocco.",
+      "I'm Yazid, a freelance web developer based in Morocco. You talk directly to the person building your site, from the first message to launch.",
+      "No ready-made templates: every site gets its own identity, designed around your business and your customers.",
       "I work in French and English, and you can reach me directly, by email or on WhatsApp."
     ],
     "competences": "Skills",
