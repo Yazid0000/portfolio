@@ -141,7 +141,7 @@ export default function Projets() {
         if (e.key === "ArrowLeft") aller(pos - 1);
       }}
     >
-      <h2 className="text-sm uppercase tracking-widest opacity-60 mb-12">{t("titre")}</h2>
+      <h2 className="text-4xl md:text-5xl font-bold mb-12">{t("titre")}</h2>
 
       {/* Sur mobile, les flèches suivent directement le prisme : on change de projet sans le perdre de vue.
           Sur ordinateur, elles reviennent sous le texte, dans la colonne de droite. */}

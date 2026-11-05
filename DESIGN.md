@@ -142,10 +142,10 @@ Les gris n'existent pas comme couleurs : ce sont l'encre ou le papier à opacit�
 ### Hierarchy
 - **Display** (Syne 800, de 17vw sur mobile à 16vw sur ordinateur, interligne 1, approche -0.025em) : uniquement le nom « YAZID » du Hero, dessiné par les particules.
 - **Showcase title** (Syne 800, de 2,25rem à 3,75rem, interligne 1) : le nom du projet affiché à côté du prisme.
-- **Headline** (Geist 700, de 2,25rem à 3rem) : titres de sections (Services, Méthode, À propos, Contact).
+- **Headline** (Geist 700, de 2,25rem à 3rem) : titres de sections (Services, Réalisations, Méthode, À propos, Contact).
 - **Title** (Geist 600, 1,5rem) : titres des services, des étapes de la méthode et du bloc Compétences.
 - **Body** (Geist 400, de 1,125rem à 1,25rem) : accroche, descriptions et paragraphes, à 70–80 % d'opacité, largeur limitée (environ 36rem pour l'accroche).
-- **Label** (Geist 400, 0,875rem, espacement 0.1em, en capitales) : surtitres comme « Développeur web freelance » ou « Réalisations », à 60 % d'opacité.
+- **Label** (Geist 400, 0,875rem, espacement 0.1em, en capitales) : surtitre « Développeur web freelance » du Hero, à 60 % d'opacité. Tous les titres de section, Réalisations compris, sont des Headlines.
 - **Mono** (Geist Mono 400, 0,875rem, chiffres à chasse fixe) : compteur `01 / 03`, terminal, astuce du terminal.
 
 ### Named Rules
