@@ -2,8 +2,8 @@ import { useTranslations } from "next-intl";
 import FormulaireContact from "@/components/FormulaireContact";
 import { plein, contour } from "@/components/boutons";
 
-const WHATSAPP = "https://wa.me/212663093386";
-const EMAIL = "mailto:yazidbennouna5@gmail.com";
+export const WHATSAPP = "https://wa.me/212663093386";
+export const EMAIL = "mailto:yazidbennouna5@gmail.com";
 
 // WhatsApp d'abord : c'est le canal le plus direct pour une grande partie des clients.
 // GitHub et LinkedIn sont dans le pied de page : ce sont des références, pas des moyens de contact.

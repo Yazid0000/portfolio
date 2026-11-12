@@ -19,7 +19,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
       <main id="contenu" tabIndex={-1} className="bg-white text-black dark:bg-black dark:text-white transition-colors outline-none">
         <Hero />
         <Services />
-        <Reveal><Projets /></Reveal>
+        <Projets />
         <Methode />
         <Reveal><APropos /></Reveal>
         <Reveal><Contact /></Reveal>

@@ -1,7 +1,7 @@
-// Liste des projets affichés dans le prisme de la section Réalisations.
+// Liste des projets de la section Réalisations (le premier est mis en avant, en grand).
 // Seulement les projets terminés, chacun avec sa capture (format 2:1, dans public/projets/).
 // Pour ajouter un projet : une ligne ici, et sa description dans messages/fr.json et en.json (Projets.descriptions).
-// Le prisme gagne une face tout seul.
+// La grille gagne une carte toute seule.
 export type Projet = {
   cle: "riad" | "solde" | "nourargan" | "homelab" | "portfolio"; // clé de la description dans messages (Projets.descriptions)
   titre: string;

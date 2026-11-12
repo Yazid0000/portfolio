@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { liens } from "@/components/Hero";
 
 // Profils publics : des références sur le travail, rangées ici plutôt que parmi les moyens de contact.
-const profils = [
+export const profils = [
   ["GitHub", "https://github.com/Yazid0000"],
   ["LinkedIn", "https://www.linkedin.com/in/yazid-bennouna-09918a441/"],
 ] as const;

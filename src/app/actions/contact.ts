@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { Resend } from "resend";
+import { trouverCandidature } from "@/data/candidatures";
 
 type Champ = "nom" | "email" | "message";
 
@@ -40,6 +41,10 @@ export async function envoyerMessage(_etat: EtatContact, formData: FormData): Pr
     message: String(formData.get("message") ?? "").trim(),
   };
 
+  // Page de candidature d'où vient le message. Le navigateur n'envoie que le slug : le nom de l'entreprise
+  // vient de la liste, donc une valeur inconnue ou trafiquée est simplement ignorée.
+  const origine = trouverCandidature(String(formData.get("origine") ?? ""))?.entreprise;
+
   const erreurs: EtatContact["erreurs"] = {};
   if (!valeurs.nom || valeurs.nom.length > 100) erreurs.nom = true;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valeurs.email)) erreurs.email = true;
@@ -63,8 +68,8 @@ export async function envoyerMessage(_etat: EtatContact, formData: FormData): Pr
     to: destinataire,
     replyTo: valeurs.email,
     // Pas de retour à la ligne dans l'objet : il finit dans les en-têtes de l'email.
-    subject: `Nouveau message de ${valeurs.nom.replace(/[\r\n]+/g, " ")}`,
-    text: `Nom : ${valeurs.nom}\nEmail : ${valeurs.email}\n\n${valeurs.message}`,
+    subject: `${origine ? `Candidature ${origine} : message` : "Nouveau message"} de ${valeurs.nom.replace(/[\r\n]+/g, " ")}`,
+    text: `Nom : ${valeurs.nom}\nEmail : ${valeurs.email}${origine ? `\nCandidature : ${origine}` : ""}\n\n${valeurs.message}`,
   });
 
   if (error) {

@@ -11,7 +11,8 @@ const anim = "duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:tran
 
 // Navigation côté client (pas de rechargement) : /fr et /en partagent le même layout racine.
 // La pastille glisse tout de suite au clic, pendant que la nouvelle langue se charge.
-export default function LangueToggle() {
+// `chemin` (facultatif) : la page à garder en changeant de langue, sans le préfixe de langue (ex. "/pour/acme").
+export default function LangueToggle({ chemin }: { chemin?: string }) {
   const locale = useLocale();
   const [choisie, setChoisie] = useState(locale);
 
@@ -26,7 +27,7 @@ export default function LangueToggle() {
       {langues.map((code) => (
         <Link
           key={code}
-          href={cheminLangue(code)}
+          href={chemin ? `${code === "fr" ? "" : `/${code}`}${chemin}` : cheminLangue(code)}
           hrefLang={code}
           scroll={false}
           onClick={() => setChoisie(code)}

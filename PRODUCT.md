@@ -15,6 +15,8 @@ Le site s'adresse, à parts égales, à deux publics qui cherchent un développe
 
 Leur tâche sur le site : juger en quelques minutes si Yazid sait faire ce dont ils ont besoin (en regardant ses réalisations et ses services), puis le contacter. Aucun des deux publics n'est prioritaire : le site doit convaincre les deux sans en sacrifier un.
 
+**Troisième public, à part : les recruteurs.** Quand Yazid postule à un poste (développeur full-stack), son CV contient un lien vers une page écrite pour cette entreprise : `/pour/<slug>` (liste dans `src/data/candidatures.ts`). Cette page s'adresse à l'équipe par son nom, montre sa photo, ce qu'il apporte, ses projets (les plus techniques d'abord) et un contact direct, email en premier. Elle n'est ni indexée ni dans le plan du site, et ne montre que des projets et des compétences : ni formation, ni expérience, ni chiffres. Le reste du site continue de parler aux clients freelance.
+
 ## Product Purpose
 
 Portfolio de Yazid Bennouna, développeur web freelance basé au Maroc. Il présente ses services (site vitrine, e-commerce, application web), ses réalisations et sa méthode de travail, et sert à obtenir des demandes de projet.

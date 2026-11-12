@@ -12,7 +12,9 @@ const champ =
 // Rouge foncé en clair, clair en sombre : au moins 4,5:1 de contraste dans les deux thèmes
 const rouge = "text-sm text-red-600 dark:text-red-400";
 
-export default function FormulaireContact() {
+// `origine` (facultatif) : le slug de la page de candidature où se trouve le formulaire. Le champ « message » parle alors
+// à un recruteur plutôt qu'à un client, et l'email reçu indique de quelle candidature il vient.
+export default function FormulaireContact({ origine }: { origine?: string }) {
   const t = useTranslations("Contact.form");
   const [etat, action, enCours] = useActionState(envoyerMessage, etatInitial);
 
@@ -23,11 +25,12 @@ export default function FormulaireContact() {
   // Libellé visible en permanence, exemple en texte indicatif, erreur juste sous le champ.
   const champDe = ({ nom, type, multiligne }: { nom: "nom" | "email" | "message"; type?: string; multiligne?: boolean }) => {
     const erreur = etat.erreurs?.[nom];
+    const variante = origine && nom === "message" ? "Recruteur" : "";
     const props = {
       id: `contact-${nom}`,
       name: nom,
       required: true,
-      placeholder: t(`${nom}Exemple`),
+      placeholder: t(`${nom}Exemple${variante}`),
       defaultValue: etat.valeurs?.[nom],
       "aria-invalid": erreur ? true : undefined,
       "aria-describedby": erreur ? `contact-${nom}-erreur` : undefined,
@@ -35,7 +38,7 @@ export default function FormulaireContact() {
     return (
       <div className="flex flex-col gap-1">
         <label htmlFor={props.id} className="text-sm opacity-70">
-          {t(nom)}
+          {t(`${nom}${variante}`)}
         </label>
         {multiligne ? (
           <textarea {...props} maxLength={5000} rows={4} className={`${champ} resize-none`} />
@@ -44,7 +47,7 @@ export default function FormulaireContact() {
         )}
         {erreur && (
           <p id={`contact-${nom}-erreur`} className={rouge}>
-            {t(`erreur${nom[0].toUpperCase()}${nom.slice(1)}`)}
+            {t(`erreur${nom[0].toUpperCase()}${nom.slice(1)}${variante}`)}
           </p>
         )}
       </div>
@@ -57,6 +60,8 @@ export default function FormulaireContact() {
       {champDe({ nom: "nom" })}
       {champDe({ nom: "email", type: "email" })}
       {champDe({ nom: "message", multiligne: true })}
+
+      {origine && <input type="hidden" name="origine" value={origine} />}
 
       {/* Piège à robots, invisible pour les humains */}
       <input name="site" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />

@@ -61,16 +61,13 @@
     "cePortfolio": "This portfolio",
     "code": "View code",
     "site": "View site",
-    "precedent": "Previous project",
-    "suivant": "Next project",
-    "aide": "Drag to rotate",
     "demo": "Demo project",
     "descriptions": {
       "riad": "Website for a six-room riad in the Marrakech medina: the rooms, the experiences and a direct booking request.",
       "solde": "Landing page for a tool that chases unpaid invoices on the business owner's behalf.",
       "nourargan": "Back office for an argan cosmetics shop: orders, stock and photos managed from a phone, with separate manager and packer access.",
       "homelab": "An old gaming laptop turned home server: fifteen self-hosted services running on Docker, reachable from anywhere through a VPN, with no open port.",
-      "portfolio": "The site you're on: a name made of particles, a 3D carousel and a hidden terminal."
+      "portfolio": "The site you're on: a name made of particles, a custom cursor and a hidden terminal."
     }
   },
   "Methode": {
@@ -104,6 +101,7 @@
       "I'm Yazid, a freelance web developer based in Morocco.",
       "I work in French and English, and you can reach me directly, by email or on WhatsApp."
     ],
+    "photo": "Portrait of Yazid Bennouna",
     "competences": "Skills",
     "outils": "Tools"
   },
@@ -124,10 +122,48 @@
       "messageExemple": "Your business, what you need, your timeline…",
       "erreurNom": "Enter your name.",
       "erreurEmail": "Enter a valid email, for example you@example.com.",
-      "erreurMessage": "Describe your project in a few words."
+      "erreurMessage": "Describe your project in a few words.",
+      "messageRecruteur": "Your message",
+      "messageExempleRecruteur": "The role, next steps, your questions…",
+      "erreurMessageRecruteur": "Write your message."
     },
     "whatsapp": "Message me on WhatsApp",
     "email": "Send an email",
+    "ou": "or leave a message here"
+  },
+  "Candidature": {
+    "metaTitre": "Yazid Bennouna · Full-stack developer, for {entreprise}",
+    "surtitre": "For the {entreprise} team",
+    "role": "Full-stack developer",
+    "accroche": "I design and ship complete web applications: the interface, the database, user accounts and the server that runs them.",
+    "photo": "Portrait of Yazid Bennouna",
+    "contacter": "Get in touch",
+    "voirProjets": "See my projects",
+    "retour": "Full portfolio",
+    "plan": "Links",
+    "apportsTitre": "What I bring",
+    "apports": [
+      {
+        "titre": "Interface",
+        "description": "Polished, fast and accessible interfaces, on phones as well as desktops.",
+        "points": ["React", "Next.js", "TypeScript", "Tailwind CSS"]
+      },
+      {
+        "titre": "Server and data",
+        "description": "Databases, authentication, roles and admin dashboards.",
+        "points": ["Node.js", "PHP", "MySQL", "PostgreSQL"]
+      },
+      {
+        "titre": "Shipping to production",
+        "description": "From the Git repository to the live service: deployment, containers and secure access.",
+        "points": ["Git", "Vercel", "Docker", "Linux"]
+      }
+    ],
+    "contactTitre": "Shall we talk?",
+    "contactSousTitre": "I reply within 24 hours, in English or French.",
+    "email": "Email me",
+    "objet": "Your application at {entreprise}",
+    "whatsapp": "WhatsApp",
     "ou": "or leave a message here"
   },
   "Terminal": {

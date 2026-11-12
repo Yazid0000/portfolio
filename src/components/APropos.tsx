@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export default function APropos() {
@@ -14,10 +15,20 @@ export default function APropos() {
     <section id="apropos" className="px-6 py-24 max-w-4xl mx-auto">
       <h2 className="text-4xl md:text-5xl font-bold mb-12">{t("titre")}</h2>
 
-      <div className="space-y-4 text-lg opacity-80">
-        {paragraphes.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
+      <div className="grid sm:grid-cols-[10rem_1fr] gap-8 items-center">
+        <Image
+          src="/yazid.jpg"
+          alt={t("photo")}
+          width={320}
+          height={320}
+          sizes="160px"
+          className="w-40 aspect-square object-cover rounded-xl border border-current/15"
+        />
+        <div className="space-y-4 text-lg opacity-80">
+          {paragraphes.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
       </div>
 
       <h3 className="text-xl font-semibold mt-12 mb-4">{t("competences")}</h3>
