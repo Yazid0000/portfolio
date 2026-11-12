@@ -66,6 +66,7 @@
       "riad": "Website for a six-room riad in the Marrakech medina: the rooms, the experiences and a direct booking request.",
       "solde": "Landing page for a tool that chases unpaid invoices on the business owner's behalf.",
       "nourargan": "Back office for an argan cosmetics shop: orders, stock and photos managed from a phone, with separate manager and packer access.",
+      "kopilot": "Property management for a managing agent: buildings, units, calls for funds, expenses and payments, with a space for the administrator, the agent and each co-owner, with their receipts and requests.",
       "homelab": "An old gaming laptop turned home server: fifteen self-hosted services running on Docker, reachable from anywhere through a VPN, with no open port.",
       "portfolio": "The site you're on: a name made of particles, a custom cursor and a hidden terminal."
     }
@@ -151,7 +152,7 @@
       {
         "titre": "Server and data",
         "description": "Databases, authentication, roles and admin dashboards.",
-        "points": ["Node.js", "PHP", "MySQL", "PostgreSQL"]
+        "points": ["PHP", "MySQL", "Node.js", "PostgreSQL"]
       },
       {
         "titre": "Shipping to production",

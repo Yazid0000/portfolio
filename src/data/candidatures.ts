@@ -21,7 +21,7 @@ export type Candidature = {
 };
 
 // Ordre par défaut pour un poste full-stack : l'application avec base de données et comptes d'abord.
-export const ordreFullStack: Projet["cle"][] = ["nourargan", "homelab", "portfolio", "riad", "solde"];
+export const ordreFullStack: Projet["cle"][] = ["nourargan", "kopilot", "homelab", "portfolio", "riad", "solde"];
 
 export const candidatures: Candidature[] = [
   // Stage en développement PHP à Tanger (offre Quintel Job, à pourvoir avant le 01/01/2027).
@@ -30,9 +30,11 @@ export const candidatures: Candidature[] = [
     entreprise: "Logidesk Maroc",
     poste: { fr: "Stage en développement PHP", en: "PHP development internship" },
     mot: {
-      fr: "Votre plateforme de rendez-vous et votre outil de gestion des salaires reposent sur PHP et MySQL, que je pratique. Nour Argan, ci-dessous, est un outil du même genre : un back-office avec des comptes, des rôles et des données métier à tenir à jour. Et mon serveur maison tourne sous Linux.",
-      en: "Your appointment platform and your payroll tool are built on PHP and MySQL, which I work with. Nour Argan, below, is a tool of the same kind: a back office with accounts, roles and business data to keep up to date. And my home server runs on Linux.",
+      fr: "Votre plateforme de rendez-vous et votre outil de gestion des salaires reposent sur PHP et MySQL. Kopilot, ci-dessous, est construit avec les mêmes outils : une application de gestion avec des comptes, des rôles, des paiements et des documents. Et mon serveur maison tourne sous Linux.",
+      en: "Your appointment platform and your payroll tool are built on PHP and MySQL. Kopilot, below, is built with the same tools: a management application with accounts, roles, payments and documents. And my home server runs on Linux.",
     },
+    // Trois projets seulement, ceux qui répondent à l'offre : PHP/MySQL, application à rôles, Linux.
+    projets: ["kopilot", "nourargan", "homelab"],
   },
 ];
 

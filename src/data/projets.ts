@@ -3,7 +3,7 @@
 // Pour ajouter un projet : une ligne ici, et sa description dans messages/fr.json et en.json (Projets.descriptions).
 // La grille gagne une carte toute seule.
 export type Projet = {
-  cle: "riad" | "solde" | "nourargan" | "homelab" | "portfolio"; // clé de la description dans messages (Projets.descriptions)
+  cle: "riad" | "solde" | "nourargan" | "kopilot" | "homelab" | "portfolio"; // clé de la description dans messages (Projets.descriptions)
   titre: string;
   type: "ecommerce" | "app" | "vitrine" | "landing" | "creatif" | "infra";
   stack: string;
@@ -42,6 +42,15 @@ export const projets: Projet[] = [
     stack: "Next.js · Postgres · Better Auth",
     lien: "https://nour-argan-back-office.vercel.app/",
     image: "/projets/nour-argan.jpg",
+  },
+  {
+    cle: "kopilot",
+    titre: "Kopilot",
+    demo: true,
+    type: "app",
+    stack: "PHP · MySQL · PDO",
+    code: "https://github.com/Yazid0000/syndic_app",
+    image: "/projets/kopilot.jpg",
   },
   {
     cle: "homelab",
